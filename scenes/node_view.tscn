@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcn6jvpn8v1dg"]
+
+[ext_resource type="Script" path="res://scripts/views/node_view.gd" id="1_n0k17"]
+
+[sub_resource type="SystemFont" id="SystemFont_5erfn"]
+font_names = PackedStringArray("Sans-Serif")
+
+[sub_resource type="LabelSettings" id="LabelSettings_01s7k"]
+font = SubResource("SystemFont_5erfn")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_if2l3"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="NodeView" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n0k17")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_01s7k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Heuristic" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_if2l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
