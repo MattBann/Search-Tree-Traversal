@@ -24,6 +24,7 @@ class_name Option
 @onready var text : TextEdit = get_node("HBoxContainer/Text")
 
 
+# Static helper function to create a new instance of this scene
 static func create_option() -> Option:
 	var new_option : Option = preload("res://scenes/option.tscn").instantiate()
 	return new_option
