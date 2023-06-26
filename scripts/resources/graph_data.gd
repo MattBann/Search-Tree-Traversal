@@ -2,12 +2,14 @@ class_name GraphData
 extends Resource
 
 @export var nodes : Array
+@export var edges : Array
 @export var next_id : int
 
 
 # Initialise the graph with no nodes
 func _init() -> void:
 	nodes = []
+	edges = []
 	next_id = 0
 
 
@@ -50,3 +52,9 @@ func get_goal_node() -> GraphNodeData:
 func refresh_nodes() -> void:
 	for node in nodes:
 		node.refresh()
+
+
+# Add an edge to a specific node with an optional weight
+func add_edge(to_id : int, end_id : int, weight := 1.0) -> void:
+	var new_edge := GraphEdgeData.new(to_id, end_id, weight)
+	edges.append(new_edge)

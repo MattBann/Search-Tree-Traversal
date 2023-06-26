@@ -21,7 +21,6 @@ signal state_changed
 # Other variables
 @export var label : String
 @export var id : int
-@export var edges : Array
 @export var is_start : bool
 @export var is_goal : bool
 @export var heuristic_value : int
@@ -35,15 +34,8 @@ func _init(p_id : int, pos := Vector2.ZERO, p_label := "", p_is_start := false, 
 		label = str(id)
 	else:
 		label = p_label
-	edges = []
 	is_start = p_is_start
 	is_goal = p_is_goal
-
-
-# Add an edge to a specific node with an optional weight
-func add_edge(end_id : int, weight := 1.0) -> void:
-	var new_edge := GraphEdgeData.new(self.id, end_id, weight)
-	edges.append(new_edge)
 
 
 # Force the position setter to update the heuristic
