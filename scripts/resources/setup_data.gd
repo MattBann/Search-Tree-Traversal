@@ -3,10 +3,10 @@ extends Resource
 
 
 enum Algorithm {
-	BFS,
-	DFS,
-	UCS,
-	ASTAR,
+	BREADTH_FIRST_SEARCH,
+	DEPTH_FIRST_SEARCH,
+	UNIFORM_COST_SEARCH,
+	A_STAR_SEARCH,
 }
 
 enum OptionType {
@@ -28,7 +28,7 @@ enum OptionType {
 		name = "algorithm",
 		option_type = OptionType.OPTION_LIST,
 		value_type = Algorithm,
-		value = Algorithm.BFS,
+		value = Algorithm.BREADTH_FIRST_SEARCH,
 	},
 	{
 		name = "start_colour",
