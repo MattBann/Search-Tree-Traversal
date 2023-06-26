@@ -22,6 +22,7 @@ class_name Option
 @onready var colour_pick : ColorPickerButton = get_node("HBoxContainer/ColorPicker")
 @onready var switch : CheckButton = get_node("HBoxContainer/Switch")
 @onready var text : TextEdit = get_node("HBoxContainer/Text")
+@onready var spin_box : SpinBox = get_node("HBoxContainer/SpinBox")
 
 
 # Static helper function to create a new instance of this scene
@@ -60,6 +61,9 @@ func _set_option_type(new_type : SetupData.OptionType) -> SetupData.OptionType:
 		(SetupData.OptionType.TEXT):
 			text.show()
 			text.text = option.get("value", "")
+		(SetupData.OptionType.SPIN):
+			spin_box.show()
+			spin_box.value = option.get("value", 100)
 	return new_type
 
 
@@ -69,6 +73,7 @@ func hide_all() -> void:
 	colour_pick.hide()
 	switch.hide()
 	text.hide()
+	spin_box.hide()
 
 
 # Set the array of options for the OPTION_LIST
@@ -76,7 +81,7 @@ func set_list_options(new_options : Array) -> void:
 	option_list.clear()
 	for i in range(len(new_options)):
 		if new_options[i] is String:
-			option_list.add_item(new_options[i], i)
+			option_list.add_item(new_options[i].capitalize(), i)
 		else:
 			option_list.add_item("", i)
 
@@ -100,3 +105,9 @@ func _on_switch_toggled(button_pressed: bool) -> void:
 
 func _on_text_text_changed() -> void:
 	option["value"] = text.text
+	Controller.register_graph_change()
+
+
+func _on_spin_box_value_changed(value: float) -> void:
+	option["value"] = value
+	Controller.register_graph_change()

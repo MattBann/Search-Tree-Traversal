@@ -14,6 +14,7 @@ enum OptionType {
 	COLOUR_PICK,
 	SWITCH,
 	TEXT,
+	SPIN,
 	LABEL
 }
 
