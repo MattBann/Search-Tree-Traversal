@@ -66,16 +66,16 @@ func _unhandled_input(event : InputEvent):
 				get_viewport().set_input_as_handled()
 		if dragging and not event.is_pressed():
 			dragging = false
-			set_settled_position()
 	
 	# If dragging, follow the mouse (until the limits of the panel)
 	if event is InputEventMouseMotion and dragging:
 		var parent := get_parent()
 		global_position = (event.position - drag_offset).clamp(parent.global_position, parent.global_position+parent.size)
+		set_node_position()
 
 
 # Update the node data to reflect the new position
-func set_settled_position() -> void:
+func set_node_position() -> void:
 	var node := Controller.get_current_config().get_graph().get_node(node_id)
 	if node == null:
 		return
