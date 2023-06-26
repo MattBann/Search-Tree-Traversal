@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var RADIUS := 32
+
 
 
 @export var node_id := -1
@@ -21,9 +21,9 @@ func _ready() -> void:
 
 # Draw the circle representing the node
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, RADIUS, colour)
+	draw_circle(Vector2.ZERO, Controller.NODE_RADIUS, colour)
 	if not Controller.get_current_config().get_option("fill_nodes"):
-		draw_circle(Vector2.ZERO, RADIUS-4, Color.WHITE)
+		draw_circle(Vector2.ZERO, Controller.NODE_RADIUS-4, Color.WHITE)
 
 
 # Update the visual representation of the node based on the currently configured options
@@ -46,7 +46,7 @@ func refresh() -> void:
 	label.text = node.label
 	label.set_position(-label.get_rect().size/2)
 	heuristic_label.text = str(node.heuristic_value)
-	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,RADIUS+heuristic_label.get_rect().size.y/2))
+	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
 	if Controller.get_current_config().get_option("show_heuristics"):
 		heuristic_label.show()
 	else: 
@@ -58,7 +58,7 @@ func refresh() -> void:
 func _unhandled_input(event : InputEvent):
 	# If the user clicks the node in move mode, start dragging it
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Controller.get_editor_mode() == Controller.EditorMode.MOVE:
-		if (event.position - global_position).length() < RADIUS:
+		if (event.position - global_position).length() < Controller.NODE_RADIUS:
 			if not dragging and event.is_pressed():
 				dragging = true
 				drag_offset = event.position - global_position

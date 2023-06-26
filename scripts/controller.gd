@@ -16,6 +16,9 @@ enum EditorMode{
 }
 
 
+const NODE_RADIUS := 32
+
+
 # Global data which is accessible through getters and setters
 var _current_config : SetupData
 var _editor_mode : EditorMode = EditorMode.FREE
