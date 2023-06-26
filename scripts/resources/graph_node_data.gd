@@ -16,6 +16,7 @@ signal state_changed
 				heuristic_value = floor(((goal.position - new_pos)*(scale/100.0)).length())
 		else:
 			heuristic_value = 0
+		state_changed.emit()
 	get: return position
 
 # Other variables
