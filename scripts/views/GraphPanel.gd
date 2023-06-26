@@ -2,16 +2,27 @@ extends Panel
 
 
 var node_packed_scene := preload("res://scenes/node_view.tscn")
+var edge_packed_scene := preload("res://scenes/edge_view.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Test data for edges:
+	# Controller.get_current_config().get_graph().add_node().position = Vector2(100,100)
+	# Controller.get_current_config().get_graph().add_node().position = Vector2(500,300)
+	# Controller.get_current_config().get_graph().add_edge(0,1)
 	Controller.graph_edited.connect(refresh)
 	# Add any pre-existent nodes as children
 	for node in Controller.get_current_config().get_graph().nodes:
 		var node_view := node_packed_scene.instantiate()
 		node_view.node_id = node.id
 		add_child(node_view)
+	# Add any pre-existent edges
+	for edge in Controller.get_current_config().get_graph().edges:
+		var edge_view := edge_packed_scene.instantiate()
+		edge_view.from_id = edge.from
+		edge_view.to_id = edge.to
+		add_child(edge_view)
 	Controller.register_graph_change()
 
 
@@ -42,6 +53,8 @@ func _gui_input(event: InputEvent) -> void:
 			node_view.node_id = node.id
 			add_child(node_view)
 			Controller.register_graph_change()
+		elif Controller.get_editor_mode() == Controller.EditorMode.CONNECT:
+			pass
 
 
 # Refresh the view (i.e. update the visuals, not the data)

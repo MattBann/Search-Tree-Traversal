@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2nluawejbb84"]
+
+[ext_resource type="Script" path="res://scripts/views/edge_view.gd" id="1_t8dil"]
+
+[node name="EdgeView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_t8dil")
+
+[node name="Arrow" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, -8, 0, 0, -16, 8)
