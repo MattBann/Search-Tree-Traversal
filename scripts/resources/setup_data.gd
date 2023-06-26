@@ -65,6 +65,12 @@ enum OptionType {
 		option_type = OptionType.SWITCH,
 		value_type = TYPE_BOOL,
 		value = false,
+	},
+	{
+		name = "distance_scale",
+		option_type = OptionType.SPIN,
+		value_type = TYPE_INT,
+		value = 10,
 	}
 ]
 

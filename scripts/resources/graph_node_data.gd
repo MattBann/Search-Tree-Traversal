@@ -11,7 +11,9 @@ signal state_changed
 		position = new_pos
 		var goal := Controller.get_current_config().get_graph().get_goal_node()
 		if goal != null:
-			heuristic_value = floor((goal.position - new_pos).length())
+			var scale : int = Controller.get_current_config().get_option("distance_scale")
+			if scale != null:
+				heuristic_value = floor(((goal.position - new_pos)*(scale/100.0)).length())
 		else:
 			heuristic_value = 0
 	get: return position
