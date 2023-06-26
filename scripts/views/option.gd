@@ -64,6 +64,9 @@ func _set_option_type(new_type : SetupData.OptionType) -> SetupData.OptionType:
 		(SetupData.OptionType.SPIN):
 			spin_box.show()
 			spin_box.value = option.get("value", 100)
+			spin_box.min_value = option.get("value_type", {}).get("min", 0)
+			spin_box.max_value = option.get("value_type", {}).get("max", 100)
+			spin_box.step = option.get("value_type", {}).get("step", 1)
 	return new_type
 
 

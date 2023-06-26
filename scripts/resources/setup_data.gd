@@ -69,7 +69,11 @@ enum OptionType {
 	{
 		name = "distance_scale",
 		option_type = OptionType.SPIN,
-		value_type = TYPE_INT,
+		value_type = {
+			min = 1,
+			max = 100,
+			step = 1
+		},
 		value = 10,
 	}
 ]
