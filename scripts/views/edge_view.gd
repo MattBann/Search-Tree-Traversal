@@ -31,7 +31,7 @@ var connecting_mode := false
 # Subscribe to updates from both to and from nodes so that changes are immediately shown
 func _ready() -> void:
 	Controller.graph_edited.connect(refresh)
-	Controller.editor_mode_changed.connect(queue_free)
+	Controller.editor_mode_changed.connect(func(_new_mode): if connecting_mode: queue_free())
 	refresh()
 
 
