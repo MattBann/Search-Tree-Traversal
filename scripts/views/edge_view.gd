@@ -66,6 +66,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		for node in get_parent().get_children():
 			if node is NodeView and (event.position - (node.global_position)).length() < Controller.NODE_RADIUS and node.node_id != from_id:
 				to_id = node.node_id
+				if Controller.get_current_config().get_graph().get_edge(from_id, to_id) != null:
+					queue_free()
+					return
 				Controller.get_current_config().get_graph().add_edge(from_id, to_id)
 				connecting_mode = false
 				refresh()
