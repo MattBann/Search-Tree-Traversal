@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv8uf6e5fpy5x"]
 
-[ext_resource type="Script" path="res://scripts/views/option.gd" id="1_2rkg6"]
+[ext_resource type="Script" path="res://scripts/views/option.gd" id="1_p2yfh"]
 
 [node name="Option" type="MarginContainer"]
 theme_override_constants/margin_bottom = 8
-script = ExtResource("1_2rkg6")
+script = ExtResource("1_p2yfh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

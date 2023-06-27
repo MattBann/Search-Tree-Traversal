@@ -25,12 +25,6 @@ class_name Option
 @onready var spin_box : SpinBox = get_node("HBoxContainer/SpinBox")
 
 
-# Static helper function to create a new instance of this scene
-static func create_option() -> Option:
-	var new_option : Option = preload("res://scenes/option.tscn").instantiate()
-	return new_option
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide_all()

@@ -3,7 +3,7 @@ extends VBoxContainer
 
 # Helper function to add a new option as a child
 func add_option(option : Dictionary) -> Option:
-	var op := Option.create_option()
+	var op : Option = preload("res://scenes/option.tscn").instantiate()
 	add_child(op)
 	op.setup_option(option)
 	return op
