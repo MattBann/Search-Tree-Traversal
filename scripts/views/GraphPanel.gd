@@ -53,8 +53,20 @@ func _gui_input(event: InputEvent) -> void:
 			node_view.node_id = node.id
 			add_child(node_view)
 			Controller.register_graph_change()
+		# If in connect mode, start creating an edge
 		elif Controller.get_editor_mode() == Controller.EditorMode.CONNECT:
-			pass
+			for edge in get_children():
+				if edge is EdgeView and edge.connecting:
+					if (event.position - (edge.position)).length() < Controller.NODE_RADIUS:
+						edge.queue_free()
+					return
+			for node in get_children():
+				if node is NodeView and (event.position - (node.position)).length() < Controller.NODE_RADIUS:
+					var edge := edge_packed_scene.instantiate()
+					edge.connecting = true
+					edge.from_id = node.node_id
+					add_child(edge)
+					break
 
 
 # Refresh the view (i.e. update the visuals, not the data)
