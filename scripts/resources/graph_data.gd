@@ -58,3 +58,11 @@ func refresh_nodes() -> void:
 func add_edge(to_id : int, end_id : int, weight := 1.0) -> void:
 	var new_edge := GraphEdgeData.new(to_id, end_id, weight)
 	edges.append(new_edge)
+
+
+# Get a specific edge if it exists, otherwise return null
+func get_edge(from_id : int, to_id : int) -> GraphEdgeData:
+	for edge in edges:
+		if edge.from == from_id and edge.to == to_id:
+			return edge
+	return null
