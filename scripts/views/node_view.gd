@@ -1,7 +1,5 @@
 extends Control
-
-
-
+class_name NodeView
 
 
 @export var node_id := -1
