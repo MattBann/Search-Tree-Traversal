@@ -56,14 +56,14 @@ func _gui_input(event: InputEvent) -> void:
 		# If in connect mode, start creating an edge
 		elif Controller.get_editor_mode() == Controller.EditorMode.CONNECT:
 			for edge in get_children():
-				if edge is EdgeView and edge.connecting:
+				if edge is EdgeView and edge.connecting_mode:
 					if (event.position - (edge.position)).length() < Controller.NODE_RADIUS:
 						edge.queue_free()
 					return
 			for node in get_children():
 				if node is NodeView and (event.position - (node.position)).length() < Controller.NODE_RADIUS:
 					var edge := edge_packed_scene.instantiate()
-					edge.connecting = true
+					edge.connecting_mode = true
 					edge.from_id = node.node_id
 					add_child(edge)
 					break

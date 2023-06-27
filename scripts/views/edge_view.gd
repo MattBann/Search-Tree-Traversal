@@ -2,6 +2,7 @@ extends Control
 class_name EdgeView
 
 
+# Setters for to and from node ids. When changed, connect signals to get updates
 @export var from_id := -1 :
 	set (new_from_id):
 		from_id = new_from_id
@@ -16,8 +17,12 @@ class_name EdgeView
 	get : return to_id
 
 
+# Cache position of the 'to' node relative to the EdgeViews position on screen
 var to_pos := Vector2.ZERO
-var connecting := false
+
+
+# Mark if edge is in 'connecting' mode (i.e. creating the edge)
+var connecting_mode := false
 
 
 @onready var arrow : Polygon2D = get_node("Arrow")
@@ -39,7 +44,7 @@ func _draw() -> void:
 func refresh() -> void:
 	position = Controller.get_current_config().get_graph().get_node(from_id).position
 	# If in connect mode, follow the mouse, otherwise go to end node
-	if connecting:
+	if connecting_mode:
 		to_pos = get_local_mouse_position() #- position
 	elif to_pos != null:
 		to_pos = Controller.get_current_config().get_graph().get_node(to_id).position - position
@@ -47,19 +52,21 @@ func refresh() -> void:
 		to_pos = Vector2.ZERO
 	queue_redraw()
 	# Move the direction arrow into place
-	arrow.position = to_pos - ((to_pos.normalized()*Controller.NODE_RADIUS) if not connecting else Vector2.ZERO)
+	arrow.position = to_pos - ((to_pos.normalized()*Controller.NODE_RADIUS) if not connecting_mode else Vector2.ZERO)
 	arrow.look_at(arrow.global_position+to_pos)
 
 
 # Handle input for setting up edge
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and connecting:
+	# Refresh view so that edge follows the mouse
+	if event is InputEventMouseMotion and connecting_mode:
 		refresh()
-	if event is InputEventMouseButton and event.is_pressed() and connecting:
+	# When you click on another node, exit connecting mode and create the edge
+	if event is InputEventMouseButton and event.is_pressed() and connecting_mode:
 		for node in get_parent().get_children():
 			if node is NodeView and (event.position - (node.global_position)).length() < Controller.NODE_RADIUS and node.node_id != from_id:
 				to_id = node.node_id
 				Controller.get_current_config().get_graph().add_edge(from_id, to_id)
-				connecting = false
+				connecting_mode = false
 				refresh()
 				break
