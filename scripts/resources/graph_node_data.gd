@@ -17,7 +17,10 @@ signal state_changed
 		else:
 			heuristic_value = 0
 		state_changed.emit()
-	get: return data.get("position", Vector2.ZERO)
+	get:
+		if typeof(data.get("position")) == TYPE_STRING:
+			return Vector2(coord_string_to_vector2(data.get("position")))
+		return data.get("position", Vector2.ZERO)
 
 # Other variables
 @export var label : String :
@@ -40,12 +43,12 @@ signal state_changed
 
 # The actual data. Properties above provide easy access to this dictionary
 @export var data := {
-	position = Vector2.ZERO,
-	label = "",
-	id = -1,
-	is_start = false,
-	is_goal = false,
-	heuristic_value = false
+	"position" : Vector2.ZERO,
+	"label" : "",
+	"id" : -1,
+	"is_start" : false,
+	"is_goal" : false,
+	"heuristic_value" : false
 }
 
 
@@ -64,3 +67,13 @@ func _init(p_id := -1, pos := Vector2.ZERO, p_label := "", p_is_start := false, 
 # Force the position setter to update the heuristic
 func refresh() -> void:
 	position = position
+
+
+func coord_string_to_vector2(coords : String) -> Vector2:
+	coords = coords.replace("(", "")
+	coords = coords.replace(")", "")
+	coords = coords.replace(",", "")
+	var x = coords.left(coords.find(" "))
+	var y = coords.right(coords.find(" "))
+	var new_coords = Vector2(int(x),int(y))
+	return new_coords

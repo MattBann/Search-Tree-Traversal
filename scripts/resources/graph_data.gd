@@ -50,7 +50,7 @@ func add_node() -> GraphNodeData:
 
 # Get a node with a specific id
 func get_node(id : int) -> GraphNodeData:
-	if id < 0:
+	if id < 0 or node_cache.size() <= id:
 		return null
 	return node_cache[id]
 
@@ -78,7 +78,8 @@ func get_goal_node() -> GraphNodeData:
 # Force refresh the state of the graph nodes
 func refresh_nodes() -> void:
 	for node in node_cache:
-		node.refresh()
+		if node != null:
+			node.refresh()
 
 
 # Add an edge to a specific node with an optional weight

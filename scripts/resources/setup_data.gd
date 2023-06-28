@@ -94,9 +94,35 @@ func get_option(name : String) -> Variant:
 	return null
 
 
-func _init() -> void:
+func _init(new_data : Dictionary = {}) -> void:
+	if new_data != {}:
+			data = new_data
+			for i in data.get("options", []):
+				if i.get("option_type") == OptionType.COLOUR_PICK and typeof(i.get("value")) == TYPE_STRING:
+					i["value"] = colour_string_to_color(i.get("value", "0, 0, 0, 1"))
 	graph = GraphData.new(data.get("graph", {}))
 
 
 func get_graph() -> GraphData:
 	return graph
+
+
+# Helper functions for loading a save
+func colour_string_to_color(colour : String) -> Color:
+	colour = colour.replace("(", "")
+	colour = colour.replace(")", "")
+	colour = colour.replace(",", "")
+	var c := colour.split(" ")
+	var new_colour = Color(float(c[0]), float(c[1]), float(c[2]), float(c[3]))
+	return new_colour
+
+
+func coord_string_to_vector2(coords : String) -> Vector2:
+	coords = coords.replace("(", "")
+	coords = coords.replace(")", "")
+	coords = coords.replace(",", "")
+	var x = coords.left(coords.find(" "))
+	var y = coords.right(coords.find(" "))
+	var new_coords = Vector2(int(x),int(y))
+	return new_coords
+	

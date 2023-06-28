@@ -12,7 +12,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Control" type="Control"]
+[node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,44 +66,86 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ButtonManager" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="ButtonManager" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 script = ExtResource("3_xs5ml")
 
-[node name="MoveButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="MoveButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 toggle_mode = true
 text = "Move"
 
-[node name="ConnectButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="ConnectButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 toggle_mode = true
 text = "Connect"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 
-[node name="PlaceStartButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="PlaceStartButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 toggle_mode = true
 text = "Place start"
 
-[node name="PlaceGoalButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="PlaceGoalButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 toggle_mode = true
 text = "Place goals"
 
-[node name="PlaceNodeButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager"]
+[node name="PlaceNodeButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 layout_mode = 2
 toggle_mode = true
 text = "Place nodes"
+
+[node name="Spacer" type="Control" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FileMenuButton" type="MenuButton" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_p3g6w")
+text = "File"
+flat = false
+item_count = 4
+popup/item_0/text = "Save"
+popup/item_0/id = 0
+popup/item_1/text = "Save as"
+popup/item_1/id = 1
+popup/item_2/text = "Open"
+popup/item_2/id = 2
+popup/item_3/text = "New"
+popup/item_3/id = 3
+
+[node name="FileDialogSave" type="FileDialog" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
+initial_position = 1
+size = Vector2i(600, 400)
+access = 2
+filters = PackedStringArray("*.stt ; Search Tree Files")
+
+[node name="FileDialogOpen" type="FileDialog" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
+initial_position = 1
+title = "Open a File"
+size = Vector2i(600, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.stt ; Search Tree Files")
 
 [node name="GraphPanel" type="Panel" parent="MarginContainer/HSplitContainer/VBoxContainer"]
 z_index = -1
@@ -114,8 +156,12 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_4j41o")
 script = ExtResource("4_dtqo3")
 
-[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager/MoveButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager" method="_on_move_button_toggled"]
-[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager/ConnectButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager" method="_on_connect_button_toggled"]
-[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager/PlaceStartButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager" method="_on_place_start_button_toggled"]
-[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager/PlaceGoalButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager" method="_on_place_goal_button_toggled"]
-[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager/PlaceNodeButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/ButtonManager" method="_on_place_node_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/MoveButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_move_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/ConnectButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_connect_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/PlaceStartButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_place_start_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/PlaceGoalButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_place_goal_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/PlaceNodeButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_place_node_button_toggled"]
+[connection signal="file_selected" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/FileDialogSave" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_file_dialog_save_file_selected"]
+[connection signal="visibility_changed" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/FileDialogSave" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_file_dialog_visibility_changed"]
+[connection signal="file_selected" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/FileDialogOpen" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_file_dialog_open_file_selected"]
+[connection signal="visibility_changed" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/FileDialogOpen" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_file_dialog_visibility_changed"]
