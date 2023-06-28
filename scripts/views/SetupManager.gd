@@ -19,6 +19,6 @@ func refresh() -> void:
 	for child in get_children():
 		child.queue_free()
 	
-	for op in Controller.get_current_config().data:
+	for op in Controller.get_current_config().data.get("options", []):
 		add_option(op)
 
