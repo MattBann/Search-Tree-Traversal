@@ -12,6 +12,13 @@ func _ready() -> void:
 	# Controller.get_current_config().get_graph().add_node().position = Vector2(500,300)
 	# Controller.get_current_config().get_graph().add_edge(0,1)
 	Controller.graph_edited.connect(refresh)
+	Controller.clear.connect(reset)
+	reset()
+
+
+func reset() -> void:
+	for child in get_children():
+		child.queue_free()
 	# Add any pre-existent nodes as children
 	for node in Controller.get_current_config().get_graph().nodes:
 		var node_view := node_packed_scene.instantiate()
@@ -23,7 +30,7 @@ func _ready() -> void:
 		edge_view.from_id = edge.from
 		edge_view.to_id = edge.to
 		add_child(edge_view)
-	Controller.register_graph_change()
+	# Controller.register_graph_change()
 
 
 # Handle input for adding new nodes

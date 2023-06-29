@@ -42,11 +42,12 @@ func _draw() -> void:
 
 # Refresh the state of the view
 func refresh() -> void:
-	position = Controller.get_current_config().get_graph().get_node(from_id).position
+	if Controller.get_current_config().get_graph().get_node(from_id) != null:
+		position = Controller.get_current_config().get_graph().get_node(from_id).position
 	# If in connect mode, follow the mouse, otherwise go to end node
 	if connecting_mode:
 		to_pos = get_local_mouse_position() #- position
-	elif to_pos != null:
+	elif to_pos != null and Controller.get_current_config().get_graph().get_node(to_id):
 		to_pos = Controller.get_current_config().get_graph().get_node(to_id).position - position
 	else:
 		to_pos = Vector2.ZERO

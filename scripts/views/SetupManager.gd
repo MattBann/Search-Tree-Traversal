@@ -11,6 +11,7 @@ func add_option(option : Dictionary) -> Option:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Controller.new_state_loaded.connect(refresh)
 	refresh()
 
 
@@ -19,6 +20,6 @@ func refresh() -> void:
 	for child in get_children():
 		child.queue_free()
 	
-	for op in Controller.get_current_config().data:
+	for op in Controller.get_current_config().data.get("options", []):
 		add_option(op)
 
