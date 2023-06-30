@@ -76,7 +76,13 @@ enum OptionType {
 				step = 1
 			},
 			value = 10,
-		}
+		},
+		{
+			name = "force_uniform_path_cost",
+			option_type = OptionType.SWITCH,
+			value_type = TYPE_BOOL,
+			value = true,
+		},
 	],
 	graph = {
 		nodes = [],
