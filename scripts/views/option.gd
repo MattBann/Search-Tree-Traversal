@@ -44,8 +44,9 @@ func _set_option_type(new_type : SetupData.OptionType) -> SetupData.OptionType:
 		(SetupData.OptionType.OPTION_LIST):
 			option_list.show()
 			if option.get("value_type") is Dictionary:
-				set_list_options(option.get("value_type", {}).keys())
-				option_list.select(option.get("value", 0))
+				set_list_options(option.get("value_type", {}))
+				option_list.select(option_list.get_item_index(option.get("value", 0)))
+				
 		(SetupData.OptionType.COLOUR_PICK):
 			colour_pick.show()
 			colour_pick.color = option.get("value", Color.BLACK)
@@ -74,19 +75,21 @@ func hide_all() -> void:
 
 
 # Set the array of options for the OPTION_LIST
-func set_list_options(new_options : Array) -> void:
+func set_list_options(new_options : Dictionary) -> void:
 	option_list.clear()
-	for i in range(len(new_options)):
-		if new_options[i] is String:
-			option_list.add_item(new_options[i].capitalize(), i)
-		else:
-			option_list.add_item("", i)
+	for op in new_options:
+		option_list.add_item(op.capitalize(), new_options[op])
+	# for i in range(len(new_options)):
+	# 	if new_options[i] is String:
+	# 		option_list.add_item(new_options[i].capitalize(), i)
+	# 	else:
+	# 		option_list.add_item("", i)
 
 
 # Signal functions to set a new value for the option:
 
-func _on_option_list_item_selected(index: int) -> void:
-	option["value"] = index
+func _on_option_list_item_selected(_index: int) -> void:
+	option["value"] = option_list.get_selected_id()
 	Controller.register_graph_change()
 
 
