@@ -26,6 +26,7 @@ var connecting_mode := false
 
 
 @onready var arrow : Polygon2D = get_node("Arrow")
+@onready var weight_label : LineEdit = get_node("Label")
 
 
 # Subscribe to updates from both to and from nodes so that changes are immediately shown
@@ -42,6 +43,10 @@ func _draw() -> void:
 
 # Refresh the state of the view
 func refresh() -> void:
+	var edge : GraphEdgeData = Controller.get_current_config().get_graph().get_edge(from_id, to_id)
+	if not connecting_mode and edge == null:
+		queue_free()
+		return
 	if Controller.get_current_config().get_graph().get_node(from_id) != null:
 		position = Controller.get_current_config().get_graph().get_node(from_id).position
 	# If in connect mode, follow the mouse, otherwise go to end node
@@ -55,6 +60,19 @@ func refresh() -> void:
 	# Move the direction arrow into place
 	arrow.position = to_pos - ((to_pos.normalized()*Controller.NODE_RADIUS) if not connecting_mode else Vector2.ZERO)
 	arrow.look_at(arrow.global_position+to_pos)
+	# If enabled, configure and show the edge's weight
+	if Controller.get_current_config().get_option("enable_edge_weights") and edge != null:
+		weight_label.text = str(edge.weight)
+		weight_label.set_position((-weight_label.get_rect().size/2)+(to_pos/2)+(to_pos.normalized().rotated(-PI/2)*20))
+		# Disable editing the weight if weights should be uniform
+		if Controller.get_current_config().get_option("force_uniform_path_cost"):
+			weight_label.editable = false
+			weight_label.text = "1"
+		else:
+			weight_label.editable = true
+		weight_label.show()
+	else:
+		weight_label.hide()
 
 
 # Handle input for setting up edge
@@ -74,3 +92,22 @@ func _unhandled_input(event: InputEvent) -> void:
 				connecting_mode = false
 				refresh()
 				break
+
+
+# When the user tries to edit the weight, check the text is valid (i.e. numbers)
+func _on_label_text_changed(new_text: String) -> void:
+	for i in range(len(new_text)):
+		if not new_text[i].is_valid_int():
+			weight_label.text = new_text.substr(0, i)
+			break
+
+
+# When the user submits a new weight, check its valid then assign it to the actual edge
+func _on_label_text_submitted(new_text: String) -> void:
+	if new_text.is_valid_int():
+		var new_weight := int(new_text)
+		var edge : GraphEdgeData = Controller.get_current_config().get_graph().get_edge(from_id, to_id)
+		if edge != null:
+			edge.weight = new_weight
+			refresh()
+	weight_label.call_deferred("release_focus")
