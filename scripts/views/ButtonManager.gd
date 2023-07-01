@@ -86,10 +86,12 @@ func graph_edited() -> void:
 		start.disabled = false
 
 
+# When the user clicks from one of Save, Save as, Open or New
 func on_file_menu_item_pressed(id : int) -> void:
 	match id:
 		(0):
 			# save
+			# If currently editing a state that hasn't been saved before, do save as, otherwise resave
 			if Controller.current_file == "":
 				save_as()
 			else:
@@ -99,6 +101,7 @@ func on_file_menu_item_pressed(id : int) -> void:
 			save_as()
 		(2):
 			# open
+			# Open an open file dialog and prevent input to the program
 			file_open_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 			file_open_dialog.popup_centered()
 			get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_STOP
@@ -107,20 +110,24 @@ func on_file_menu_item_pressed(id : int) -> void:
 			Controller.start_new()
 
 
+# Open a save file dialog and prevent input to the program
 func save_as() -> void:
 	file_save_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 	file_save_dialog.popup_centered()
 	get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_STOP
 
 
+# When user selects a file to open, tell controller to open it
 func _on_file_dialog_open_file_selected(path:String):
 	Controller.load_state_from_file(path)
 
 
+# When user selects a file to write to, tell controller to save to it
 func _on_file_dialog_save_file_selected(path:String):
 	Controller.save_state(path)
 
 
+# When dialog closes, make sure to resume input to the program
 func _on_file_dialog_visibility_changed() -> void:
 	if get_node("/root/UI").mouse_filter == Control.MOUSE_FILTER_STOP:
 		get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_PASS

@@ -63,11 +63,14 @@ func save_state(path : String) -> void:
 	save.close()
 
 
+# Load a config from the given file
 func load_state_from_file(path : String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
+	# Check file open operation succeeded
 	if file == null:
 		push_error("Error while trying to read from '{0}'".format([path]))
 		return
+	# Attempt to parse file contents as JSON
 	var json_string := file.get_pascal_string()
 	var json := JSON.new()
 	var result := json.parse(json_string)
@@ -76,6 +79,7 @@ func load_state_from_file(path : String) -> void:
 		file.close()
 		return
 	var data = json.data
+	# Check that file contents match expected type
 	if typeof(data) != TYPE_DICTIONARY:
 		push_error("File contents do not match expected type: Expected Dictionary, got ", str(typeof(data)))
 		file.close()
