@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2nluawejbb84"]
+[gd_scene load_steps=3 format=3 uid="uid://c2nluawejbb84"]
 
 [ext_resource type="Script" path="res://scripts/views/edge_view.gd" id="1_t8dil"]
+[ext_resource type="Theme" uid="uid://de5s6yajhp1tc" path="res://theme/dark_theme.tres" id="2_k0cpm"]
 
 [node name="EdgeView" type="Control"]
 layout_mode = 3
@@ -11,3 +12,19 @@ script = ExtResource("1_t8dil")
 [node name="Arrow" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-16, -8, 0, 0, -16, 8)
+
+[node name="Label" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_k0cpm")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+alignment = 1
+max_length = 4
+flat = true
+caret_blink = true
+
+[connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
+[connection signal="text_submitted" from="Label" to="." method="_on_label_text_submitted"]
