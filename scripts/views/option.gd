@@ -79,11 +79,6 @@ func set_list_options(new_options : Dictionary) -> void:
 	option_list.clear()
 	for op in new_options:
 		option_list.add_item(op.capitalize(), new_options[op])
-	# for i in range(len(new_options)):
-	# 	if new_options[i] is String:
-	# 		option_list.add_item(new_options[i].capitalize(), i)
-	# 	else:
-	# 		option_list.add_item("", i)
 
 
 # Signal functions to set a new value for the option:
