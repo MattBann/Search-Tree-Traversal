@@ -60,10 +60,13 @@ func update_right_click_menu() -> void:
 	popup_menu.clear()
 	popup_menu.add_item("Delete node", 0)
 	popup_menu.add_submenu_item("Convert to:", "ConvertSubmenu", 1)
+	convert_submenu.clear()
 	convert_submenu.add_item("Start node", 0)
-	convert_submenu.add_item("Goal node", 0)
-	convert_submenu.add_item("Node", 0)
+	convert_submenu.add_item("Goal node", 1)
+	convert_submenu.add_item("Node", 2)
 	var node := Controller.get_current_config().get_graph().get_node(node_id)
+	if node == null:
+		return
 	# Disable button if not possible to convert to that type
 	if node.is_start or Controller.get_current_config().get_graph().get_start_node() != null:
 		convert_submenu.set_item_disabled(0, true)
@@ -111,3 +114,22 @@ func _on_popup_menu_id_pressed(id:int):
 			Controller.get_current_config().get_graph().delete_node(node_id)
 			Controller.register_graph_change()
 			queue_free()
+
+
+func _on_convert_submenu_id_pressed(id:int):
+	print("HELLO")
+	match id:
+		(0):
+			# To start
+			if Controller.get_current_config().get_graph().get_start_node() == null:
+				Controller.get_current_config().get_graph().get_node(node_id).is_start = true
+				Controller.get_current_config().get_graph().get_node(node_id).is_goal = false
+		(1):
+			# To goal
+			Controller.get_current_config().get_graph().get_node(node_id).is_goal = true
+			Controller.get_current_config().get_graph().get_node(node_id).is_start = false
+		(2):
+			# To normal node
+			Controller.get_current_config().get_graph().get_node(node_id).is_start = false
+			Controller.get_current_config().get_graph().get_node(node_id).is_goal = false
+	Controller.register_graph_change()

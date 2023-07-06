@@ -41,3 +41,4 @@ text_overrun_behavior = 3
 [node name="ConvertSubmenu" type="PopupMenu" parent="PopupMenu"]
 
 [connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="id_pressed" from="PopupMenu/ConvertSubmenu" to="." method="_on_convert_submenu_id_pressed"]

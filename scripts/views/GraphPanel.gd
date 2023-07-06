@@ -81,3 +81,5 @@ func refresh() -> void:
 	for child in get_children():
 		if child.has_method("refresh"):
 			child.refresh()
+		if child.has_method("update_right_click_menu"):
+			child.update_right_click_menu()
