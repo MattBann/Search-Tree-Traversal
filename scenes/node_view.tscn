@@ -35,3 +35,9 @@ label_settings = SubResource("LabelSettings_if2l3")
 horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+
+[node name="ConvertSubmenu" type="PopupMenu" parent="PopupMenu"]
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]

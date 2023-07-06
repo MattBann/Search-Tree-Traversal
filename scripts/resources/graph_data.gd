@@ -55,10 +55,30 @@ func get_node(id : int) -> GraphNodeData:
 	return node_cache[id]
 
 
+# Delete a node. If the node doesn't exist, do nothing
+func delete_node(id : int) -> void:
+	if get_node(id) != null:
+		# First replace with null in the cache, then remove from the actual node array
+		node_cache[id] = null
+		for i in range(len(nodes)):
+			if nodes[i].get("id", -1) == id:
+				nodes.remove_at(i)
+				break
+		# Also delete any edges attached to the node
+		var i := 0
+		while i < len(edges):
+			if edges[i].get("from", -1) == id or edges[i].get("to", -1) == id:
+				print("deleting edge "+ str(edges[i].get("from", -1)) + " to " + str(edges[i].get("to", -1)))
+				delete_edge(edges[i].get("from", -1), edges[i].get("to", -1))
+				i = 0
+				continue
+			i += 1
+
+
 # Get the single start node in the graph if it exists, else null
 func get_start_node() -> GraphNodeData:
 	for node in node_cache:
-		if node.is_start:
+		if node != null and node.is_start:
 			return node
 	return null
 
@@ -67,7 +87,7 @@ func get_start_node() -> GraphNodeData:
 func get_goal_node() -> GraphNodeData:
 	var goal : GraphNodeData = null
 	for node in node_cache:
-		if node.is_goal:
+		if node != null and node.is_goal:
 			if goal == null:
 				goal = node
 			else:
@@ -92,6 +112,19 @@ func add_edge(to_id : int, end_id : int, weight := 1.0) -> void:
 # Get a specific edge if it exists, otherwise return null
 func get_edge(from_id : int, to_id : int) -> GraphEdgeData:
 	for edge in edge_cache:
-		if edge.from == from_id and edge.to == to_id:
+		if edge != null and edge.from == from_id and edge.to == to_id:
 			return edge
 	return null
+
+
+# Remove all edges with the given start and end. If no edge exists, do nothing
+func delete_edge(from_id : int, to_id : int) -> void:
+	for i in range(len(edge_cache)):
+		if edge_cache[i] != null and edge_cache[i].from == from_id and edge_cache[i].to == to_id:
+			edge_cache[i] = null
+	var i := 0
+	while i < len(edges):
+		if edges[i].get("from", -1) == from_id and edges[i].get("to", -1) == to_id:
+			edges.remove_at(i)
+			i -= 1
+		i += 1
