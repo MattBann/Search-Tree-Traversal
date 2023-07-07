@@ -13,18 +13,27 @@ script = ExtResource("1_t8dil")
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-16, -8, 0, 0, -16, 8)
 
+[node name="LabelArrow" type="Polygon2D" parent="."]
+color = Color(0.760784, 0.760784, 0.760784, 1)
+offset = Vector2(11, 0)
+polygon = PackedVector2Array(-15, -10, 4, 0, -15, 10, -15, 6, -6, 2, -25, 2, -25, -2, -6, -2, -15, -6)
+
 [node name="Label" type="LineEdit" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 67.0625
+offset_bottom = 31.0
 theme = ExtResource("2_k0cpm")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
+text = "1234"
 alignment = 1
 max_length = 4
 flat = true
 caret_blink = true
 
+[node name="PopupMenu" type="PopupMenu" parent="."]
+
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Label" to="." method="_on_label_text_submitted"]
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
