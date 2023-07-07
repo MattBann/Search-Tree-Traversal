@@ -27,6 +27,7 @@ var connecting_mode := false
 
 @onready var arrow : Polygon2D = get_node("Arrow")
 @onready var weight_label : LineEdit = get_node("Label")
+@onready var popup_menu : PopupMenu = get_node("PopupMenu")
 
 
 # Subscribe to updates from both to and from nodes so that changes are immediately shown
@@ -34,6 +35,7 @@ func _ready() -> void:
 	Controller.graph_edited.connect(refresh)
 	Controller.editor_mode_changed.connect(func(_new_mode): if connecting_mode: queue_free())
 	refresh()
+	update_right_click_menu()
 
 
 # Draw the line representing the edge
@@ -81,7 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and connecting_mode:
 		refresh()
 	# When you click on another node, exit connecting mode and create the edge
-	if event is InputEventMouseButton and event.is_pressed() and connecting_mode:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() and connecting_mode:
 		for node in get_parent().get_children():
 			if node is NodeView and (event.position - (node.global_position)).length() < Controller.NODE_RADIUS and node.node_id != from_id:
 				to_id = node.node_id
@@ -90,8 +92,37 @@ func _unhandled_input(event: InputEvent) -> void:
 					return
 				Controller.get_current_config().get_graph().add_edge(from_id, to_id)
 				connecting_mode = false
-				refresh()
+				# refresh()
+				Controller.register_graph_change()
+				get_viewport().set_input_as_handled()
 				break
+	
+	# If right clicking on (or close to) the edge, open the context menu
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed() and not connecting_mode:
+		var p := get_global_mouse_position() - global_position
+		var n := to_pos.normalized()
+		var d := (p - (p.dot(n)) * n).length()
+		if d < 5.0 :
+			popup_menu.popup_on_parent(get_global_rect())
+			popup_menu.position += Vector2i(get_local_mouse_position().floor())
+			get_viewport().set_input_as_handled()
+
+
+# Setup the right click popup menu
+func update_right_click_menu() -> void:
+	popup_menu.clear()
+	# Check if edge in other direction also exists
+	var opposite := Controller.get_current_config().get_graph().get_edge(to_id, from_id)
+	if opposite == null:
+		popup_menu.add_item("Delete edge", 0)
+	else:
+		# Provide options for deleting either (since you can only actually select one due to handling)
+		var from_label := Controller.get_current_config().get_graph().get_node(from_id).label
+		var to_label := Controller.get_current_config().get_graph().get_node(to_id).label
+		popup_menu.add_separator("From " + from_label + " to " + to_label)
+		popup_menu.add_item("Delete edge", 0)
+		popup_menu.add_separator("From " + to_label + " to " + from_label)
+		popup_menu.add_item("Delete edge", 1)
 
 
 # When the user tries to edit the weight, check the text is valid (i.e. numbers)
@@ -111,3 +142,16 @@ func _on_label_text_submitted(new_text: String) -> void:
 			edge.weight = new_weight
 			refresh()
 	weight_label.call_deferred("release_focus")
+
+
+# Handle clicking an item in the right-click popup menu
+func _on_popup_menu_id_pressed(id: int) -> void:
+	match id:
+		(0):
+			# Delete edge with from=from_id and to=to_id
+			Controller.get_current_config().get_graph().delete_edge(from_id, to_id)
+			Controller.register_graph_change()
+		(1):
+			# Delete edge with from=to_id and to=from_id
+			Controller.get_current_config().get_graph().delete_edge(to_id, from_id)
+			Controller.register_graph_change()

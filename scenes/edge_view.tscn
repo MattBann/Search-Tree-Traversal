@@ -26,5 +26,8 @@ max_length = 4
 flat = true
 caret_blink = true
 
+[node name="PopupMenu" type="PopupMenu" parent="."]
+
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Label" to="." method="_on_label_text_submitted"]
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
