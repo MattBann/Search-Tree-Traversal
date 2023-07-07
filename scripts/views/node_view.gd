@@ -98,6 +98,8 @@ func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and (event.position - global_position).length() < Controller.NODE_RADIUS:
 		if not dragging and event.is_pressed():
 			popup_menu.popup_on_parent(get_global_rect())
+			# Prevent other overlapping nodes receiving the same input
+			get_viewport().set_input_as_handled()
 
 # Update the node data to reflect the new position
 func set_node_position() -> void:
