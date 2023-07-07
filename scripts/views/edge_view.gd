@@ -27,6 +27,7 @@ var connecting_mode := false
 
 @onready var arrow : Polygon2D = get_node("Arrow")
 @onready var weight_label : LineEdit = get_node("Label")
+@onready var weight_label_arrow : Polygon2D = get_node("LabelArrow")
 @onready var popup_menu : PopupMenu = get_node("PopupMenu")
 
 
@@ -65,7 +66,10 @@ func refresh() -> void:
 	# If enabled, configure and show the edge's weight
 	if Controller.get_current_config().get_option("enable_edge_weights") and edge != null:
 		weight_label.text = str(edge.weight)
-		weight_label.set_position((-weight_label.get_rect().size/2)+(to_pos/2)+(to_pos.normalized().rotated(-PI/2)*20))
+		var offset := (to_pos.normalized().rotated(-PI/2)*20)
+		weight_label.set_position((-weight_label.get_rect().size/2)+(to_pos/2) + offset)
+		weight_label_arrow.rotation = arrow.rotation
+		weight_label_arrow.position = (to_pos/2) + (offset)
 		# Disable editing the weight if weights should be uniform
 		if Controller.get_current_config().get_option("force_uniform_path_cost"):
 			weight_label.editable = false
@@ -73,8 +77,10 @@ func refresh() -> void:
 		else:
 			weight_label.editable = true
 		weight_label.show()
+		weight_label_arrow.show()
 	else:
 		weight_label.hide()
+		weight_label_arrow.hide()
 
 
 # Handle input for setting up edge
