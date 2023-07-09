@@ -12,10 +12,12 @@ var drag_offset := Vector2.ZERO
 @onready var heuristic_label : Label = get_node("Heuristic")
 @onready var popup_menu : PopupMenu = get_node("PopupMenu")
 @onready var convert_submenu : PopupMenu = get_node("PopupMenu/ConvertSubmenu")
+@onready var label_edit : LineEdit = get_node("LabelEdit")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	label_edit.hide()
 	refresh()
 	update_right_click_menu()
 
@@ -44,14 +46,21 @@ func refresh() -> void:
 		colour = Controller.get_current_config().get_option("goal_colour")
 	else:
 		colour = Controller.get_current_config().get_option("node_colour")
+
+	# Setup the label and label editor
+	label.custom_minimum_size = Vector2(64,64)
 	label.text = node.label
 	label.set_position(-label.get_rect().size/2)
+	label_edit.set_position(-label_edit.get_rect().size/2)
+
+	# Setup the heuristic label
 	heuristic_label.text = str(node.heuristic_value)
 	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
 	if Controller.get_current_config().get_option("show_heuristics"):
 		heuristic_label.show()
 	else: 
 		heuristic_label.hide()
+	
 	queue_redraw()
 
 
@@ -60,6 +69,7 @@ func update_right_click_menu() -> void:
 	popup_menu.clear()
 	popup_menu.add_item("Delete node", 0)
 	popup_menu.add_submenu_item("Convert to:", "ConvertSubmenu", 1)
+	popup_menu.add_item("Change label", 2)
 	convert_submenu.clear()
 	convert_submenu.add_item("Start node", 0)
 	convert_submenu.add_item("Goal node", 1)
@@ -78,6 +88,14 @@ func update_right_click_menu() -> void:
 
 # Process input that hasn't aready been intercepted
 func _unhandled_input(event : InputEvent):
+	# Make sure to leave the label editor if you click away
+	if event is InputEventMouseButton and label_edit.visible:
+		label_edit.call_deferred("release_focus")
+		Controller.get_current_config().get_graph().get_node(node_id).label = label_edit.text
+		label_edit.hide()
+		label.show()
+		refresh()
+
 	# If the user clicks the node in move mode, start dragging it
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Controller.get_editor_mode() == Controller.EditorMode.MOVE:
 		if (event.position - global_position).length() < Controller.NODE_RADIUS:
@@ -101,6 +119,7 @@ func _unhandled_input(event : InputEvent):
 			# Prevent other overlapping nodes receiving the same input
 			get_viewport().set_input_as_handled()
 
+
 # Update the node data to reflect the new position
 func set_node_position() -> void:
 	var node := Controller.get_current_config().get_graph().get_node(node_id)
@@ -116,10 +135,15 @@ func _on_popup_menu_id_pressed(id:int):
 			Controller.get_current_config().get_graph().delete_node(node_id)
 			Controller.register_graph_change()
 			queue_free()
+		(2):
+			# Change label
+			label_edit.text = Controller.get_current_config().get_graph().get_node(node_id).label
+			label.hide()
+			label_edit.show()
+			label_edit.call_deferred("grab_focus")
 
 
 func _on_convert_submenu_id_pressed(id:int):
-	print("HELLO")
 	match id:
 		(0):
 			# To start
@@ -135,3 +159,11 @@ func _on_convert_submenu_id_pressed(id:int):
 			Controller.get_current_config().get_graph().get_node(node_id).is_start = false
 			Controller.get_current_config().get_graph().get_node(node_id).is_goal = false
 	Controller.register_graph_change()
+
+
+# Exit the label editor when a new label is submitted (labels limited to 8 characters)
+func _on_label_edit_text_submitted(new_text:String):
+	Controller.get_current_config().get_graph().get_node(node_id).label = new_text
+	label_edit.hide()
+	label.show()
+	refresh()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcn6jvpn8v1dg"]
+[gd_scene load_steps=6 format=3 uid="uid://dcn6jvpn8v1dg"]
 
 [ext_resource type="Script" path="res://scripts/views/node_view.gd" id="1_n0k17"]
 
@@ -9,6 +9,9 @@ font_names = PackedStringArray("Sans-Serif")
 font = SubResource("SystemFont_5erfn")
 font_size = 24
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_1ihbt"]
+font_names = PackedStringArray("Arial")
 
 [sub_resource type="LabelSettings" id="LabelSettings_if2l3"]
 font_color = Color(0, 0, 0, 1)
@@ -26,6 +29,21 @@ offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_01s7k")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LabelEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_1ihbt")
+theme_override_font_sizes/font_size = 24
+alignment = 1
+max_length = 8
+expand_to_text_length = true
+flat = true
 
 [node name="Heuristic" type="Label" parent="."]
 layout_mode = 0
@@ -40,5 +58,6 @@ text_overrun_behavior = 3
 
 [node name="ConvertSubmenu" type="PopupMenu" parent="PopupMenu"]
 
+[connection signal="text_submitted" from="LabelEdit" to="." method="_on_label_edit_text_submitted"]
 [connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]
 [connection signal="id_pressed" from="PopupMenu/ConvertSubmenu" to="." method="_on_convert_submenu_id_pressed"]
