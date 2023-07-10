@@ -139,8 +139,8 @@ access = 2
 filters = PackedStringArray("*.stt ; Search Tree Files")
 
 [node name="FileDialogOpen" type="FileDialog" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
-initial_position = 1
 title = "Open a File"
+initial_position = 1
 size = Vector2i(600, 400)
 ok_button_text = "Open"
 file_mode = 0
