@@ -24,6 +24,7 @@ const NODE_RADIUS := 32
 # Global data which is accessible through getters and setters
 var _current_config : SetupData
 var _editor_mode : EditorMode = EditorMode.FREE
+var _is_visualisation_running : bool = false
 
 
 var current_file := ""
@@ -42,6 +43,10 @@ func get_editor_mode() -> EditorMode:
 	return _editor_mode
 
 
+func is_visualisation_running() -> bool:
+	return _is_visualisation_running
+
+
 func set_editor_mode(new_mode : EditorMode) -> void:
 	_editor_mode = new_mode
 	editor_mode_changed.emit(new_mode)
@@ -50,6 +55,16 @@ func set_editor_mode(new_mode : EditorMode) -> void:
 func register_graph_change() -> void:
 	_current_config.graph.refresh_nodes()
 	graph_edited.emit()
+
+
+func start_visualisation() -> void:
+	# TODO Create Runner object and start visualisation
+	pass
+
+
+func abort_visualisation() -> void:
+	# TODO Abort visualisation, called by Runner if unable to run
+	pass
 
 
 # Save the current config to the given file
