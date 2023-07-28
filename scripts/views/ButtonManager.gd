@@ -16,6 +16,8 @@ extends HBoxContainer
 func _ready() -> void:
 	Controller.graph_edited.connect(graph_edited)
 	file_menu.get_popup().id_pressed.connect(on_file_menu_item_pressed)
+	if OS.get_name() == "Web":
+		file_menu.get_popup().remove_item(1)
 
 
 # Handle toggling of editor mode, including deselecting other modes:
@@ -91,6 +93,10 @@ func on_file_menu_item_pressed(id : int) -> void:
 	match id:
 		(0):
 			# save
+			# If platform is web, download the file:
+			if OS.get_name() == "Web":
+				Controller.web_save()
+				return
 			# If currently editing a state that hasn't been saved before, do save as, otherwise resave
 			if Controller.current_file == "":
 				save_as()
@@ -101,6 +107,10 @@ func on_file_menu_item_pressed(id : int) -> void:
 			save_as()
 		(2):
 			# open
+			# If platform is web, ask for file upload:
+			if OS.get_name() == "Web":
+				Controller.web_load()
+				return
 			# Open an open file dialog and prevent input to the program
 			file_open_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
 			file_open_dialog.popup_centered()
