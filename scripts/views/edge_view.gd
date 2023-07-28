@@ -173,3 +173,7 @@ func _on_popup_menu_id_pressed(id: int) -> void:
 			# Delete edge with from=to_id and to=from_id
 			Controller.get_current_config().get_graph().delete_edge(to_id, from_id)
 			Controller.register_graph_change()
+
+
+func _on_label_focus_exited() -> void:
+	_on_label_text_submitted(weight_label.text)
