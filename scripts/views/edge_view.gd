@@ -88,6 +88,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Refresh view so that edge follows the mouse
 	if event is InputEventMouseMotion and connecting_mode:
 		refresh()
+	
+	if event is InputEventMouseButton and weight_label.has_focus():
+		weight_label.call_deferred("release_focus")
+
 	# When you click on another node, exit connecting mode and create the edge
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() and connecting_mode:
 		for node in get_parent().get_children():
@@ -106,9 +110,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	# If right clicking on (or close to) the edge, open the context menu
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed() and not connecting_mode:
 		var p := get_global_mouse_position() - global_position
-		var n := to_pos.normalized()
-		var d := (p - (p.dot(n)) * n).length()
-		if d < 5.0 :
+		var proj := p.dot(to_pos)
+		var ablen_sqr := to_pos.length_squared()
+		var d := proj / ablen_sqr
+		var cp : Vector2
+		if d <= 0:
+			cp = Vector2.ZERO
+		elif d >= 1:
+			cp = to_pos
+		else:
+			cp = to_pos * d
+		if (cp-p).length_squared() < 25.0 :
 			popup_menu.popup_on_parent(get_global_rect())
 			popup_menu.position += Vector2i(get_local_mouse_position().floor())
 			get_viewport().set_input_as_handled()
