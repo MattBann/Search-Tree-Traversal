@@ -117,6 +117,15 @@ func get_edge(from_id : int, to_id : int) -> GraphEdgeData:
 	return null
 
 
+# Get all edges that start at the given node
+func get_edges_from(from_id : int) -> Array[GraphEdgeData]:
+	var result : Array[GraphEdgeData] = []
+	for i in edge_cache:
+		if i.from == from_id:
+			result.append(i)
+	return result
+
+
 # Remove all edges with the given start and end. If no edge exists, do nothing
 func delete_edge(from_id : int, to_id : int) -> void:
 	for i in range(len(edge_cache)):
