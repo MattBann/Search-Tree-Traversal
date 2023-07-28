@@ -83,16 +83,13 @@ func get_start_node() -> GraphNodeData:
 	return null
 
 
-# Returns the goal node if there is a single goal node, or null if none/multiple
-func get_goal_node() -> GraphNodeData:
-	var goal : GraphNodeData = null
+# Returns an array of goal nodes
+func get_goal_nodes() -> Array[GraphNodeData]:
+	var goals : Array[GraphNodeData] = []
 	for node in node_cache:
 		if node != null and node.is_goal:
-			if goal == null:
-				goal = node
-			else:
-				return null
-	return goal
+			goals.append(node)
+	return goals
 
 
 # Force refresh the state of the graph nodes
