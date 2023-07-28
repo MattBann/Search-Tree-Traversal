@@ -28,6 +28,7 @@ var _is_visualisation_running : bool = false
 
 
 var current_file := ""
+var current_runner : Runner
 
 
 func _init() -> void:
@@ -59,12 +60,14 @@ func register_graph_change() -> void:
 
 func start_visualisation() -> void:
 	# TODO Create Runner object and start visualisation
-	pass
+	_is_visualisation_running = true
+	current_runner = Runner.new()
 
 
 func abort_visualisation() -> void:
 	# TODO Abort visualisation, called by Runner if unable to run
-	pass
+	current_runner = null
+	_is_visualisation_running = false
 
 
 # Save the current config to the given file

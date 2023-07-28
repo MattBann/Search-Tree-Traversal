@@ -74,6 +74,15 @@ func _gui_input(event: InputEvent) -> void:
 					edge.from_id = node.node_id
 					add_child(edge)
 					break
+	
+	# Temporary debug input for visualisation
+	if OS.is_debug_build() and event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+		if Controller.is_visualisation_running():
+			print("Step")
+			Controller.current_runner.step()
+		else:
+			print("Start runner")
+			Controller.start_visualisation()
 
 
 # Refresh the view (i.e. update the visuals, not the data)

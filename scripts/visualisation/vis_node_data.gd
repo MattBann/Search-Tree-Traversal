@@ -4,9 +4,15 @@ class_name VisualisationNodeData
 
 # Store reference to the node it represents and the specific distance from the start node for this entry
 var node_id : int = -1
-var distance : int = 0
+var cost : float = 0.0
+var previous_node : VisualisationNodeData
 
 
-func _init(new_node_id : int, new_distance : int) -> void:
+func _init(new_node_id : int, new_cost : float, prev_node : VisualisationNodeData) -> void:
     node_id = new_node_id
-    distance = new_distance
+    cost = new_cost
+    previous_node = prev_node
+
+
+func _to_string() -> String:
+    return "id: " + str(node_id) + ", cost: " + str(cost)
