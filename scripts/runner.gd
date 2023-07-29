@@ -116,3 +116,4 @@ func enqueue() -> void:
             queue.append_array(expansion_list)
             queue.sort_custom(func (a:VisualisationNodeData,b:VisualisationNodeData): 
                 return a.cost + Controller.get_current_config().get_graph().get_node(a.node_id).heuristic_value < b.cost + Controller.get_current_config().get_graph().get_node(b.node_id).heuristic_value)
+    queue_changed.emit(queue)
