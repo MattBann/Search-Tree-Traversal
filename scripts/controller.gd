@@ -33,6 +33,7 @@ var current_file := ""
 
 func _init() -> void:
 	_current_config = SetupData.new()
+	clear.connect(func () : abort_visualisation())
 
 
 # Getter for _current_config
