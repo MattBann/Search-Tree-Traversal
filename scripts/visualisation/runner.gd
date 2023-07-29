@@ -65,6 +65,7 @@ func step() -> void:
                             s += str(n.node_id) + " <- "
                             n = n.previous_node
                         print(s)
+                    Controller.register_graph_change()
                     return
         
         (Stages.EXPAND_OUT):
@@ -88,6 +89,9 @@ func step() -> void:
         print("Queue: ", queue)
         print("Visisted: ", visited)
         print("")
+
+    # Tell Controller that something has changed
+    Controller.register_graph_change()
 
     # Move to next stage:
     current_stage = ((current_stage+1) % Stages.size()) as Stages
