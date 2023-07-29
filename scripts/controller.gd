@@ -25,10 +25,10 @@ const NODE_RADIUS := 32
 var _current_config : SetupData
 var _editor_mode : EditorMode = EditorMode.FREE
 var _is_visualisation_running : bool = false
+var _current_runner : Runner
 
 
 var current_file := ""
-var current_runner : Runner
 
 
 func _init() -> void:
@@ -58,15 +58,19 @@ func register_graph_change() -> void:
 	graph_edited.emit()
 
 
+func get_current_runner() -> Runner:
+	return _current_runner
+
+
 func start_visualisation() -> void:
 	# TODO Create Runner object and start visualisation
 	_is_visualisation_running = true
-	current_runner = Runner.new()
+	_current_runner = Runner.new()
 
 
 func abort_visualisation() -> void:
 	# TODO Abort visualisation, called by Runner if unable to run
-	current_runner = null
+	_current_runner = null
 	_is_visualisation_running = false
 
 

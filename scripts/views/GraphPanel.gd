@@ -79,7 +79,7 @@ func _gui_input(event: InputEvent) -> void:
 	if OS.is_debug_build() and event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 		if Controller.is_visualisation_running():
 			print("Step")
-			Controller.current_runner.step()
+			Controller.get_current_runner().step()
 		else:
 			print("Start runner")
 			Controller.start_visualisation()
