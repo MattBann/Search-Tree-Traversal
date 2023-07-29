@@ -25,6 +25,10 @@ var to_pos := Vector2.ZERO
 var connecting_mode := false
 
 
+# Store the colour for the edge
+var colour := Color.BLACK
+
+
 @onready var arrow : Polygon2D = get_node("Arrow")
 @onready var weight_label : LineEdit = get_node("Label")
 @onready var weight_label_arrow : Polygon2D = get_node("LabelArrow")
@@ -41,7 +45,7 @@ func _ready() -> void:
 
 # Draw the line representing the edge
 func _draw() -> void:
-	draw_line(Vector2.ZERO, to_pos-(to_pos.normalized()*8), Color.BLACK, 2.0, true)
+	draw_line(Vector2.ZERO, to_pos-(to_pos.normalized()*8), colour, 2.0, true)
 
 
 # Refresh the state of the view
@@ -81,6 +85,20 @@ func refresh() -> void:
 	else:
 		weight_label.hide()
 		weight_label_arrow.hide()
+	
+	# If visualisation is running, apply a different colour when necessary
+	if Controller.is_visualisation_running() \
+		and (Controller.get_current_runner().current_stage == Runner.Stages.EXPAND_OUT \
+		or Controller.get_current_runner().current_stage == Runner.Stages.ENQUEUE) \
+		and Controller.get_current_runner().current_node.node_id == from_id:
+			colour = Color.RED
+			# Ensure visible:
+			get_parent().move_child(self, -1)
+	else:
+		colour = Color.BLACK
+	
+	# Apply colour to arrow:
+	arrow.color = colour
 
 
 # Handle input for setting up edge

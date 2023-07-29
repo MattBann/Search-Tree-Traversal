@@ -47,6 +47,17 @@ func refresh() -> void:
 	else:
 		colour = Controller.get_current_config().get_option("node_colour")
 
+	# If the visualisation is running and node is selected/being expanded apply different colour
+	if Controller.is_visualisation_running():
+		if Controller.get_current_runner().current_node.node_id == node_id:
+			colour = Color.DARK_BLUE
+		
+	# Adjust label colour to be more easily readable
+	if colour.get_luminance() < 0.5:
+		label.modulate = Color.WHITE
+	else:
+		label.modulate = Color.BLACK
+
 	# Setup the label and label editor
 	label.custom_minimum_size = Vector2(64,64)
 	label.text = node.label
