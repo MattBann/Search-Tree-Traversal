@@ -51,7 +51,11 @@ func refresh() -> void:
 	if Controller.is_visualisation_running():
 		if Controller.get_current_runner().current_node.node_id == node_id:
 			colour = Color.DARK_BLUE
-		
+		if node_id in Controller.get_current_runner().visited:
+			modulate = Color8(160,160,160)
+	else:
+		modulate = Color.WHITE
+
 	# Adjust label colour to be more easily readable
 	if colour.get_luminance() < 0.5:
 		label.modulate = Color.WHITE
