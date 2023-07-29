@@ -73,6 +73,7 @@ func abort_visualisation() -> void:
 	# TODO Abort visualisation, called by Runner if unable to run
 	_current_runner = null
 	_is_visualisation_running = false
+	register_graph_change()
 
 
 # Save the current config to the given file

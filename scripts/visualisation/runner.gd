@@ -40,6 +40,9 @@ func _init() -> void:
 
 # Execute the next stage of the algorithm from the steps in Stages
 func step() -> void:
+    if completed_path:
+        Controller.abort_visualisation()
+        return
     match (current_stage):
         (Stages.SELECT_NODE):
             # Pop a node from the front of the queue
