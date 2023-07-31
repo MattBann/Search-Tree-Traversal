@@ -15,19 +15,28 @@ extends HBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Controller.graph_edited.connect(graph_edited)
+	Controller.editor_mode_changed.connect(_on_editor_mode_change)
 	file_menu.get_popup().id_pressed.connect(on_file_menu_item_pressed)
 	if OS.get_name() == "Web":
 		file_menu.get_popup().remove_item(1)
 
 
 # Handle toggling of editor mode, including deselecting other modes:
+func _on_editor_mode_change(new_mode : Controller.EditorMode) -> void:
+	if new_mode != Controller.EditorMode.MOVE:
+		move.set_pressed_no_signal(false)
+	if new_mode != Controller.EditorMode.CONNECT:
+		connect.set_pressed_no_signal(false)
+	if new_mode != Controller.EditorMode.PLACE_START:
+		start.set_pressed_no_signal(false)
+	if new_mode != Controller.EditorMode.PLACE_GOAL:
+		goal.set_pressed_no_signal(false)
+	if new_mode != Controller.EditorMode.PLACE_NODE:
+		node.set_pressed_no_signal(false)
+
 
 func _on_place_node_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		move.set_pressed_no_signal(false)
-		connect.set_pressed_no_signal(false)
-		start.set_pressed_no_signal(false)
-		goal.set_pressed_no_signal(false)
 		Controller.set_editor_mode(Controller.EditorMode.PLACE_NODE)
 	else:
 		Controller.set_editor_mode(Controller.EditorMode.FREE)
@@ -35,10 +44,6 @@ func _on_place_node_button_toggled(button_pressed:bool) -> void:
 
 func _on_place_goal_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		move.set_pressed_no_signal(false)
-		connect.set_pressed_no_signal(false)
-		start.set_pressed_no_signal(false)
-		node.set_pressed_no_signal(false)
 		Controller.set_editor_mode(Controller.EditorMode.PLACE_GOAL)
 	else:
 		Controller.set_editor_mode(Controller.EditorMode.FREE)
@@ -46,10 +51,6 @@ func _on_place_goal_button_toggled(button_pressed:bool) -> void:
 
 func _on_place_start_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		move.set_pressed_no_signal(false)
-		connect.set_pressed_no_signal(false)
-		goal.set_pressed_no_signal(false)
-		node.set_pressed_no_signal(false)
 		Controller.set_editor_mode(Controller.EditorMode.PLACE_START)
 	else:
 		Controller.set_editor_mode(Controller.EditorMode.FREE)
@@ -57,10 +58,6 @@ func _on_place_start_button_toggled(button_pressed:bool) -> void:
 
 func _on_connect_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		move.set_pressed_no_signal(false)
-		start.set_pressed_no_signal(false)
-		goal.set_pressed_no_signal(false)
-		node.set_pressed_no_signal(false)
 		Controller.set_editor_mode(Controller.EditorMode.CONNECT)
 	else:
 		Controller.set_editor_mode(Controller.EditorMode.FREE)
@@ -68,10 +65,6 @@ func _on_connect_button_toggled(button_pressed:bool) -> void:
 
 func _on_move_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		connect.set_pressed_no_signal(false)
-		start.set_pressed_no_signal(false)
-		goal.set_pressed_no_signal(false)
-		node.set_pressed_no_signal(false)
 		Controller.set_editor_mode(Controller.EditorMode.MOVE)
 	else:
 		Controller.set_editor_mode(Controller.EditorMode.FREE)
