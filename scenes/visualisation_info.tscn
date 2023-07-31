@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://va4os7lmi0yl"]
+
+[ext_resource type="Script" path="res://scripts/visualisation/visualisation_info.gd" id="1_ck75f"]
+
+[node name="VisualisationInfo" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ck75f")
