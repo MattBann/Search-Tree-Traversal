@@ -14,6 +14,7 @@ enum EditorMode{
 	PLACE_START,
 	PLACE_GOAL,
 	PLACE_NODE,
+	VISUALISER_RUNNING,
 	FREE
 }
 
@@ -24,6 +25,7 @@ const NODE_RADIUS := 32
 # Global data which is accessible through getters and setters
 var _current_config : SetupData
 var _editor_mode : EditorMode = EditorMode.FREE
+var _pre_vis_editor_mode : EditorMode
 var _is_visualisation_running : bool = false
 var _current_runner : Runner
 
@@ -63,16 +65,19 @@ func get_current_runner() -> Runner:
 	return _current_runner
 
 
+# Create the runner and start the visualisation
 func start_visualisation() -> void:
-	# TODO Create Runner object and start visualisation
 	_is_visualisation_running = true
+	_pre_vis_editor_mode = _editor_mode
 	_current_runner = Runner.new()
+	set_editor_mode(EditorMode.VISUALISER_RUNNING)
 
 
+# Stop the visualisation
 func abort_visualisation() -> void:
-	# TODO Abort visualisation, called by Runner if unable to run
 	_current_runner = null
 	_is_visualisation_running = false
+	set_editor_mode(_pre_vis_editor_mode)
 	register_graph_change()
 
 

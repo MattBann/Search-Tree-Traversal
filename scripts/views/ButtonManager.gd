@@ -33,6 +33,8 @@ func _on_editor_mode_change(new_mode : Controller.EditorMode) -> void:
 		goal.set_pressed_no_signal(false)
 	if new_mode != Controller.EditorMode.PLACE_NODE:
 		node.set_pressed_no_signal(false)
+	if new_mode == Controller.EditorMode.VISUALISER_RUNNING:
+		pass # TODO Hide editor buttons and show runner controls
 
 
 func _on_place_node_button_toggled(button_pressed:bool) -> void:
