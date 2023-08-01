@@ -12,6 +12,8 @@ extends HBoxContainer
 @onready var file_open_dialog : FileDialog = get_node("FileDialogOpen")
 @onready var runner_auto_step : Button = get_node("RunnerAutoButton")
 @onready var auto_run_timer : Timer = get_node("Timer")
+@onready var runner_interval_label : Label = get_node("RunnerIntervalLabel")
+@onready var runner_interval_slider : Slider = get_node("RunnerIntervalSlider")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +26,7 @@ func _ready() -> void:
 	auto_run_timer.timeout.connect(func (): \
 		Controller.get_current_runner().step() if Controller.is_visualisation_running() \
 		else auto_run_timer.stop())
+	runner_interval_slider.value = 1.0
 
 
 # Handle toggling of editor mode, including deselecting other modes:
@@ -175,11 +178,16 @@ func _on_runner_stop_button_pressed() -> void:
 # Start a timer to automatically step through the visualisation
 func _on_runner_auto_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
-		auto_run_timer.wait_time = 1.0 # TODO Setup step interval control
 		auto_run_timer.one_shot = false
 		auto_run_timer.start()
 	else:
 		auto_run_timer.stop()
+
+
+# When changed, update wait time and show change
+func _on_runner_interval_slider_value_changed(value:float) -> void:
+	auto_run_timer.wait_time = value
+	runner_interval_label.text = "%.1fs" % value # Ensure 1 dp format
 
 
 # Button icon attribution: https://www.flaticon.com/authors/freepik
