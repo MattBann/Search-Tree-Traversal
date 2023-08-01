@@ -10,6 +10,8 @@ extends HBoxContainer
 @onready var file_menu : MenuButton = get_node("FileMenuButton")
 @onready var file_save_dialog : FileDialog = get_node("FileDialogSave")
 @onready var file_open_dialog : FileDialog = get_node("FileDialogOpen")
+@onready var runner_auto_step : Button = get_node("RunnerAutoButton")
+@onready var auto_run_timer : Timer = get_node("Timer")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +36,17 @@ func _on_editor_mode_change(new_mode : Controller.EditorMode) -> void:
 	if new_mode != Controller.EditorMode.PLACE_NODE:
 		node.set_pressed_no_signal(false)
 	if new_mode == Controller.EditorMode.VISUALISER_RUNNING:
-		pass # TODO Hide editor buttons and show runner controls
+		for child in get_children():
+			if child.is_in_group("editor_controls"):
+				child.hide()
+			elif child.is_in_group("runner_controls"):
+				child.show()
+	else:
+		for child in get_children():
+			if child.is_in_group("editor_controls"):
+				child.show()
+			elif child.is_in_group("runner_controls"):
+				child.hide()
 
 
 func _on_place_node_button_toggled(button_pressed:bool) -> void:
@@ -137,3 +149,32 @@ func _on_file_dialog_visibility_changed() -> void:
 	if get_node("/root/UI").mouse_filter == Control.MOUSE_FILTER_STOP:
 		get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_PASS
 	
+
+# When visualisation start button pressed, tell Controller to start runner
+func _on_start_vis_button_pressed() -> void:
+	Controller.start_visualisation()
+	runner_auto_step.button_pressed = false
+
+
+# Step through the visualisation
+func _on_runner_step_button_pressed() -> void:
+	if Controller.is_visualisation_running():
+		Controller.get_current_runner().step()
+	else:
+		Controller.abort_visualisation()
+	
+
+# Stop the visualisation
+func _on_runner_stop_button_pressed() -> void:
+	Controller.abort_visualisation()
+
+
+# Start a timer to automatically step through the visualisation
+func _on_runner_auto_button_toggled(button_pressed:bool) -> void:
+	if button_pressed:
+		auto_run_timer.wait_time = 1.0 # TODO Setup step interval control
+		auto_run_timer.timeout.connect(func (): \
+			Controller.get_current_runner().step() if Controller.is_visualisation_running() \
+			else auto_run_timer.stop())
+		auto_run_timer.one_shot = false
+		auto_run_timer.start()
