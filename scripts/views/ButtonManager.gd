@@ -21,6 +21,9 @@ func _ready() -> void:
 	file_menu.get_popup().id_pressed.connect(on_file_menu_item_pressed)
 	if OS.get_name() == "Web":
 		file_menu.get_popup().remove_item(1)
+	auto_run_timer.timeout.connect(func (): \
+		Controller.get_current_runner().step() if Controller.is_visualisation_running() \
+		else auto_run_timer.stop())
 
 
 # Handle toggling of editor mode, including deselecting other modes:
@@ -173,8 +176,7 @@ func _on_runner_stop_button_pressed() -> void:
 func _on_runner_auto_button_toggled(button_pressed:bool) -> void:
 	if button_pressed:
 		auto_run_timer.wait_time = 1.0 # TODO Setup step interval control
-		auto_run_timer.timeout.connect(func (): \
-			Controller.get_current_runner().step() if Controller.is_visualisation_running() \
-			else auto_run_timer.stop())
 		auto_run_timer.one_shot = false
 		auto_run_timer.start()
+	else:
+		auto_run_timer.stop()
