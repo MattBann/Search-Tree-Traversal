@@ -15,4 +15,4 @@ func _init(new_node_id : int, new_cost : float, prev_node : VisualisationNodeDat
 
 
 func _to_string() -> String:
-    return "id: " + str(node_id) + ", cost: " + str(cost)
+    return "node: " + Controller.get_current_config().get_graph().get_node(node_id).label + " (" + str(node_id) + "), cost: " + str(cost)
