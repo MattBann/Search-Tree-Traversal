@@ -56,6 +56,7 @@ func step() -> void:
 					break
 			expansion_list.clear()
 			current_node_changed.emit(current_node)
+			queue_changed.emit(queue)
 		
 		(Stages.TEST_END_CASE):
 			# Check if reached a goal state
