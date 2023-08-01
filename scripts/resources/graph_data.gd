@@ -83,16 +83,13 @@ func get_start_node() -> GraphNodeData:
 	return null
 
 
-# Returns the goal node if there is a single goal node, or null if none/multiple
-func get_goal_node() -> GraphNodeData:
-	var goal : GraphNodeData = null
+# Returns an array of goal nodes
+func get_goal_nodes() -> Array[GraphNodeData]:
+	var goals : Array[GraphNodeData] = []
 	for node in node_cache:
 		if node != null and node.is_goal:
-			if goal == null:
-				goal = node
-			else:
-				return null
-	return goal
+			goals.append(node)
+	return goals
 
 
 # Force refresh the state of the graph nodes
@@ -115,6 +112,15 @@ func get_edge(from_id : int, to_id : int) -> GraphEdgeData:
 		if edge != null and edge.from == from_id and edge.to == to_id:
 			return edge
 	return null
+
+
+# Get all edges that start at the given node
+func get_edges_from(from_id : int) -> Array[GraphEdgeData]:
+	var result : Array[GraphEdgeData] = []
+	for i in edge_cache:
+		if i.from == from_id:
+			result.append(i)
+	return result
 
 
 # Remove all edges with the given start and end. If no edge exists, do nothing

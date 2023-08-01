@@ -9,11 +9,11 @@ signal state_changed
 @export var position : Vector2 :
 	set (new_pos):
 		data["position"] = new_pos
-		var goal := Controller.get_current_config().get_graph().get_goal_node()
-		if goal != null:
+		var goal := Controller.get_current_config().get_graph().get_goal_nodes()
+		if len(goal) == 1:
 			var scale : int = Controller.get_current_config().get_option("distance_scale")
 			if scale != null:
-				heuristic_value = floor(((goal.position - new_pos)*(scale/100.0)).length())
+				heuristic_value = floor(((goal[0].position - new_pos)*(scale/100.0)).length())
 		else:
 			heuristic_value = 0
 		state_changed.emit()
@@ -69,11 +69,12 @@ func refresh() -> void:
 	position = position
 
 
+# Convert a string in the form "(x, y)" into a vector2 object
 func coord_string_to_vector2(coords : String) -> Vector2:
 	coords = coords.replace("(", "")
 	coords = coords.replace(")", "")
 	coords = coords.replace(",", "")
 	var x = coords.left(coords.find(" "))
-	var y = coords.right(coords.find(" "))
+	var y = coords.right(-1*coords.find(" "))
 	var new_coords = Vector2(int(x),int(y))
 	return new_coords

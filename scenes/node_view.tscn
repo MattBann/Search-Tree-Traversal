@@ -8,7 +8,6 @@ font_names = PackedStringArray("Sans-Serif")
 [sub_resource type="LabelSettings" id="LabelSettings_01s7k"]
 font = SubResource("SystemFont_5erfn")
 font_size = 24
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_1ihbt"]
 font_names = PackedStringArray("Arial")

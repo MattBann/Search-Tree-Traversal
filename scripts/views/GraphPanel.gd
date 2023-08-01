@@ -74,12 +74,24 @@ func _gui_input(event: InputEvent) -> void:
 					edge.from_id = node.node_id
 					add_child(edge)
 					break
+	
+	# Temporary debug input for visualisation
+	# if OS.is_debug_build() and event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+	# 	if Controller.is_visualisation_running():
+	# 		print("Step")
+	# 		Controller.get_current_runner().step()
+	# 	else:
+	# 		print("Start runner")
+	# 		Controller.start_visualisation()
 
 
 # Refresh the view (i.e. update the visuals, not the data)
 func refresh() -> void:
+	custom_minimum_size = Vector2.ZERO
 	for child in get_children():
 		if child.has_method("refresh"):
 			child.refresh()
 		if child.has_method("update_right_click_menu"):
 			child.update_right_click_menu()
+		custom_minimum_size.x = max(custom_minimum_size.x, child.position.x+Controller.NODE_RADIUS)
+		custom_minimum_size.y = max(custom_minimum_size.y, child.position.y+Controller.NODE_RADIUS)

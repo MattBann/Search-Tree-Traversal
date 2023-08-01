@@ -3,5 +3,9 @@
 [ext_resource type="StyleBox" uid="uid://doqejl02yg86s" path="res://theme/style_box_flat.tres" id="1_qjlx3"]
 
 [resource]
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
 Panel/styles/panel = ExtResource("1_qjlx3")
 PanelContainer/styles/panel = ExtResource("1_qjlx3")

@@ -25,6 +25,10 @@ var to_pos := Vector2.ZERO
 var connecting_mode := false
 
 
+# Store the colour for the edge
+var colour := Color.BLACK
+
+
 @onready var arrow : Polygon2D = get_node("Arrow")
 @onready var weight_label : LineEdit = get_node("Label")
 @onready var weight_label_arrow : Polygon2D = get_node("LabelArrow")
@@ -41,7 +45,7 @@ func _ready() -> void:
 
 # Draw the line representing the edge
 func _draw() -> void:
-	draw_line(Vector2.ZERO, to_pos-(to_pos.normalized()*8), Color.BLACK, 2.0, true)
+	draw_line(Vector2.ZERO, to_pos-(to_pos.normalized()*8), colour, 2.0, true)
 
 
 # Refresh the state of the view
@@ -81,6 +85,20 @@ func refresh() -> void:
 	else:
 		weight_label.hide()
 		weight_label_arrow.hide()
+	
+	# If visualisation is running, apply a different colour when necessary
+	if Controller.is_visualisation_running() \
+		and (Controller.get_current_runner().current_stage == Runner.Stages.EXPAND_OUT \
+		or Controller.get_current_runner().current_stage == Runner.Stages.ENQUEUE) \
+		and Controller.get_current_runner().current_node.node_id == from_id:
+			colour = Color.RED
+			# Ensure visible:
+			get_parent().move_child(self, -1)
+	else:
+		colour = Color.BLACK
+	
+	# Apply colour to arrow:
+	arrow.color = colour
 
 
 # Handle input for setting up edge
@@ -88,6 +106,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Refresh view so that edge follows the mouse
 	if event is InputEventMouseMotion and connecting_mode:
 		refresh()
+	
+	if event is InputEventMouseButton and weight_label.has_focus():
+		weight_label.call_deferred("release_focus")
+
 	# When you click on another node, exit connecting mode and create the edge
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() and connecting_mode:
 		for node in get_parent().get_children():
@@ -106,9 +128,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	# If right clicking on (or close to) the edge, open the context menu
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed() and not connecting_mode:
 		var p := get_global_mouse_position() - global_position
-		var n := to_pos.normalized()
-		var d := (p - (p.dot(n)) * n).length()
-		if d < 5.0 :
+		var proj := p.dot(to_pos)
+		var ablen_sqr := to_pos.length_squared()
+		var d := proj / ablen_sqr
+		var cp : Vector2
+		if d <= 0:
+			cp = Vector2.ZERO
+		elif d >= 1:
+			cp = to_pos
+		else:
+			cp = to_pos * d
+		if (cp-p).length_squared() < 25.0 :
 			popup_menu.popup_on_parent(get_global_rect())
 			popup_menu.position += Vector2i(get_local_mouse_position().floor())
 			get_viewport().set_input_as_handled()
@@ -161,3 +191,7 @@ func _on_popup_menu_id_pressed(id: int) -> void:
 			# Delete edge with from=to_id and to=from_id
 			Controller.get_current_config().get_graph().delete_edge(to_id, from_id)
 			Controller.register_graph_change()
+
+
+func _on_label_focus_exited() -> void:
+	_on_label_text_submitted(weight_label.text)

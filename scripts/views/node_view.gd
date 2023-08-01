@@ -47,6 +47,21 @@ func refresh() -> void:
 	else:
 		colour = Controller.get_current_config().get_option("node_colour")
 
+	# If the visualisation is running and node is selected/being expanded apply different colour
+	if Controller.is_visualisation_running():
+		if Controller.get_current_runner().current_node.node_id == node_id:
+			colour = Color.DARK_BLUE
+		if node_id in Controller.get_current_runner().visited:
+			modulate = Color8(160,160,160)
+	else:
+		modulate = Color.WHITE
+
+	# Adjust label colour to be more easily readable
+	if colour.get_luminance() < 0.5:
+		label.modulate = Color.WHITE
+	else:
+		label.modulate = Color.BLACK
+
 	# Setup the label and label editor
 	label.custom_minimum_size = Vector2(64,64)
 	label.text = node.label
@@ -126,6 +141,8 @@ func set_node_position() -> void:
 	if node == null:
 		return
 	node.position = position
+	heuristic_label.text = str(node.heuristic_value)
+	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
 
 
 func _on_popup_menu_id_pressed(id:int):

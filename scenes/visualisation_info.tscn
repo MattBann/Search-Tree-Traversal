@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://va4os7lmi0yl"]
+
+[ext_resource type="Script" path="res://scripts/visualisation/visualisation_info.gd" id="1_ck75f"]
+[ext_resource type="Theme" uid="uid://de5s6yajhp1tc" path="res://theme/dark_theme.tres" id="2_ji4v4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2x0a"]
+bg_color = Color(0, 0, 0.764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bibrg"]
+bg_color = Color(0.807843, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwtdq"]
+bg_color = Color(0.58, 0.36, 0.84, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="VisualisationInfo" type="VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+offset_right = 244.0
+offset_bottom = 608.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ck75f")
+
+[node name="AlgorithmTypeLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Current Node:"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2x0a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+
+[node name="CurrentNodeLabel" type="Label" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="GoalTestLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Expansion List:"
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bibrg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+
+[node name="ExpansionListLabel" type="Label" parent="PanelContainer2/MarginContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+text = "Queue:"
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwtdq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer3"]
+layout_mode = 2
+theme = ExtResource("2_ji4v4")
+
+[node name="QueueLabel" type="Label" parent="PanelContainer3/MarginContainer"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+vertical_alignment = 1
