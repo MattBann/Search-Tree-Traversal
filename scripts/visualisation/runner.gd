@@ -85,6 +85,8 @@ func step() -> void:
 		(Stages.ENQUEUE):
 			# Add the expanded nodes to the queue, using the chosen search type's enqueueing algorithm and mark node as visited
 			enqueue()
+			expansion_list.clear()
+			expansion_list_changed.emit()
 			visited.append(current_node.node_id)
 
 	# Output state in console for debugging
