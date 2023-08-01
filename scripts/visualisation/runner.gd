@@ -5,6 +5,7 @@ class_name Runner
 signal current_node_changed(new_current_node:VisualisationNodeData)
 signal expansion_list_changed(new_expansion_list:Array[VisualisationNodeData])
 signal found_path(goal_data:VisualisationNodeData)
+signal goal_test_failed
 signal queue_changed(new_queue:Array[VisualisationNodeData])
 
 
@@ -74,7 +75,7 @@ func step() -> void:
 						print("With path length " + str(current_node.cost))
 					Controller.register_graph_change()
 					return
-			
+			goal_test_failed.emit()
 		
 		(Stages.EXPAND_OUT):
 			# Expand outwards from the current node, ignoring visited nodes
@@ -88,7 +89,7 @@ func step() -> void:
 			# Add the expanded nodes to the queue, using the chosen search type's enqueueing algorithm and mark node as visited
 			enqueue()
 			expansion_list.clear()
-			expansion_list_changed.emit()
+			expansion_list_changed.emit(expansion_list)
 			visited.append(current_node.node_id)
 
 	# Output state in console for debugging
