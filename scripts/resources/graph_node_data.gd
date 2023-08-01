@@ -69,11 +69,12 @@ func refresh() -> void:
 	position = position
 
 
+# Convert a string in the form "(x, y)" into a vector2 object
 func coord_string_to_vector2(coords : String) -> Vector2:
 	coords = coords.replace("(", "")
 	coords = coords.replace(")", "")
 	coords = coords.replace(",", "")
 	var x = coords.left(coords.find(" "))
-	var y = coords.right(coords.find(" "))
+	var y = coords.right(-1*coords.find(" "))
 	var new_coords = Vector2(int(x),int(y))
 	return new_coords
