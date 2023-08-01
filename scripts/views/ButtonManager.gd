@@ -180,3 +180,6 @@ func _on_runner_auto_button_toggled(button_pressed:bool) -> void:
 		auto_run_timer.start()
 	else:
 		auto_run_timer.stop()
+
+
+# Button icon attribution: https://www.flaticon.com/authors/freepik
