@@ -2,5 +2,3 @@
 .godot/
 .vscode/
 builds/*
-# Include web build for GitHub pages
-!builds/web/
