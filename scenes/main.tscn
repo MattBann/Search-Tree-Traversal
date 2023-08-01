@@ -203,7 +203,11 @@ filters = PackedStringArray("*.stt ; Search Tree Files")
 
 [node name="Timer" type="Timer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager"]
 
-[node name="GraphPanel" type="Panel" parent="MarginContainer/HSplitContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraphPanel" type="Panel" parent="MarginContainer/HSplitContainer/VBoxContainer/ScrollContainer"]
 z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
