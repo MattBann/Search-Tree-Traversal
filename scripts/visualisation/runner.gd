@@ -65,14 +65,16 @@ func step() -> void:
 					if OS.is_debug_build():
 						print("Found Path:")
 						var s := ""
-						s += str(current_node.node_id) + " <- "
+						s += str(current_node.node_id)
 						var n := current_node.previous_node
 						while n:
-							s += str(n.node_id) + " <- "
+							s += " <- " + str(n.node_id)
 							n = n.previous_node
 						print(s)
+						print("With path length " + str(current_node.cost))
 					Controller.register_graph_change()
 					return
+			
 		
 		(Stages.EXPAND_OUT):
 			# Expand outwards from the current node, ignoring visited nodes
