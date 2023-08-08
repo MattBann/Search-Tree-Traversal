@@ -90,6 +90,7 @@ func save_state(path : String) -> void:
 	var json_string := JSON.stringify(_current_config.data, "\t")
 	save.store_string(json_string)
 	save.close()
+	current_file = path
 
 
 # Load a config from the given file
