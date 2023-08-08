@@ -3,11 +3,11 @@
 [ext_resource type="Theme" uid="uid://de5s6yajhp1tc" path="res://theme/dark_theme.tres" id="1_p3g6w"]
 [ext_resource type="Script" path="res://scripts/views/info_panel_manager.gd" id="2_hw65x"]
 [ext_resource type="PackedScene" uid="uid://dwyehtwti04ug" path="res://scenes/setup_manager.tscn" id="2_nf4k3"]
-[ext_resource type="Script" path="res://scripts/views/ButtonManager.gd" id="3_xs5ml"]
-[ext_resource type="Script" path="res://scripts/views/GraphPanel.gd" id="4_dtqo3"]
+[ext_resource type="Script" path="res://scripts/views/button_manager.gd" id="4_61p0y"]
 [ext_resource type="Texture2D" uid="uid://df0yptjpx0fmb" path="res://assets/icons/media-play-symbol.png" id="5_ywtr8"]
 [ext_resource type="Texture2D" uid="uid://d1bdnmghunm8j" path="res://assets/icons/forward-media-step.png" id="6_oc38r"]
 [ext_resource type="Texture2D" uid="uid://7ydesnj80y03" path="res://assets/icons/media-stop-button.png" id="7_44te1"]
+[ext_resource type="Script" path="res://scripts/views/graph_panel.gd" id="8_o3ekm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j41o"]
 bg_color = Color(0.929412, 0.929412, 0.929412, 1)
@@ -80,7 +80,7 @@ theme = ExtResource("1_p3g6w")
 
 [node name="ButtonManager" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
-script = ExtResource("3_xs5ml")
+script = ExtResource("4_61p0y")
 
 [node name="MoveButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" groups=["editor_controls"]]
 layout_mode = 2
@@ -214,7 +214,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_4j41o")
-script = ExtResource("4_dtqo3")
+script = ExtResource("8_o3ekm")
 
 [connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/MoveButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_move_button_toggled"]
 [connection signal="toggled" from="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager/ConnectButton" to="MarginContainer/HSplitContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/ButtonManager" method="_on_connect_button_toggled"]
