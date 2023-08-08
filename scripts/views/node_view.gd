@@ -57,7 +57,7 @@ func refresh() -> void:
 		modulate = Color.WHITE
 
 	# Adjust label colour to be more easily readable
-	if colour.get_luminance() < 0.5:
+	if colour.get_luminance() < 0.5 and Controller.get_current_config().get_option("fill_nodes"):
 		label.modulate = Color.WHITE
 	else:
 		label.modulate = Color.BLACK
