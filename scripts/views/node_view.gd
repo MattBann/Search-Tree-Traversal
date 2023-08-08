@@ -121,6 +121,7 @@ func _unhandled_input(event : InputEvent):
 				get_viewport().set_input_as_handled()
 		if dragging and not event.is_pressed():
 			dragging = false
+			set_node_position()
 	
 	# If dragging, follow the mouse (until the limits of the panel)
 	if event is InputEventMouseMotion and dragging:
@@ -143,6 +144,8 @@ func set_node_position() -> void:
 	node.position = position
 	heuristic_label.text = str(node.heuristic_value)
 	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
+	if not dragging:
+		Controller.register_graph_change()
 
 
 func _on_popup_menu_id_pressed(id:int):
