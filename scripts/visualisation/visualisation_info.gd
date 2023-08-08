@@ -24,9 +24,14 @@ func _ready() -> void:
 	algorithm_type_label.text = "Algorithm: " + (SetupData.Algorithm.find_key(algorithm) as String).capitalize()
 
 
+func _get_node_text(node : VisualisationNodeData) -> String:
+	var heuristic : String = (" + " + str(Controller.get_current_config().get_graph().get_node(node.node_id).heuristic_value)) if Controller.get_current_config().get_option("algorithm") == SetupData.Algorithm.A_STAR_SEARCH else ""
+	return Controller.get_current_config().get_graph().get_node(node.node_id).label + " (" + str(node.cost) + heuristic + ")"
+
+
 # Update text showing the current node and its path cost
 func _on_current_node_changed(current_node : VisualisationNodeData) -> void:
-	current_node_label.text = Controller.get_current_config().get_graph().get_node(current_node.node_id).label + " (" + str(current_node.cost) + ")"
+	current_node_label.text = _get_node_text(current_node)
 
 
 # Update text showing the list of nodes reachable from the current node
@@ -34,7 +39,7 @@ func _on_expansion_list_changed(new_list : Array[VisualisationNodeData]) -> void
 	goal_test_label.text = ""
 	expansion_list_label.text = ""
 	for i in range(len(new_list)):
-		expansion_list_label.text += Controller.get_current_config().get_graph().get_node(new_list[i].node_id).label + " (" + str(new_list[i].cost) + ")"
+		expansion_list_label.text += _get_node_text(new_list[i])
 		if i != len(new_list) - 1: expansion_list_label.text += "\n"
 
 
@@ -52,5 +57,5 @@ func _on_path_found(_path) -> void:
 func _on_queue_changed(new_queue : Array[VisualisationNodeData]) -> void:
 	queue_label.text = ""
 	for i in range(len(new_queue)):
-		queue_label.text += Controller.get_current_config().get_graph().get_node(new_queue[i].node_id).label + " (" + str(new_queue[i].cost) + ")"
+		queue_label.text += _get_node_text(new_queue[i])
 		if i != len(new_queue) - 1: queue_label.text += "\n"

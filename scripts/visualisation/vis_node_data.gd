@@ -15,4 +15,5 @@ func _init(new_node_id : int, new_cost : float, prev_node : VisualisationNodeDat
 
 
 func _to_string() -> String:
-    return "node: " + Controller.get_current_config().get_graph().get_node(node_id).label + " (" + str(node_id) + "), cost: " + str(cost)
+    var heuristic : String = (" + " + str(Controller.get_current_config().get_graph().get_node(node_id).heuristic_value)) if Controller.get_current_config().get_option("algorithm") == SetupData.Algorithm.A_STAR_SEARCH else ""
+    return "node: " + Controller.get_current_config().get_graph().get_node(node_id).label + " (" + str(node_id) + heuristic + "), cost: " + str(cost)

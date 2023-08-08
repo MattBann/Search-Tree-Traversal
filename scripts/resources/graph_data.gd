@@ -118,7 +118,7 @@ func get_edge(from_id : int, to_id : int) -> GraphEdgeData:
 func get_edges_from(from_id : int) -> Array[GraphEdgeData]:
 	var result : Array[GraphEdgeData] = []
 	for i in edge_cache:
-		if i.from == from_id:
+		if i != null and i.from == from_id:
 			result.append(i)
 	return result
 

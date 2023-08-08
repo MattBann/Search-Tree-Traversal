@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwyehtwti04ug"]
 
-[ext_resource type="Script" path="res://scripts/views/SetupManager.gd" id="1_mttw0"]
+[ext_resource type="Script" path="res://scripts/views/setup_manager.gd" id="1_mttw0"]
 
 [node name="SetupManager" type="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)

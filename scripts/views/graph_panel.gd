@@ -93,5 +93,5 @@ func refresh() -> void:
 			child.refresh()
 		if child.has_method("update_right_click_menu"):
 			child.update_right_click_menu()
-		custom_minimum_size.x = max(custom_minimum_size.x, child.position.x+Controller.NODE_RADIUS)
-		custom_minimum_size.y = max(custom_minimum_size.y, child.position.y+Controller.NODE_RADIUS)
+		custom_minimum_size.x = max(custom_minimum_size.x, child.position.x+2*Controller.NODE_RADIUS)
+		custom_minimum_size.y = max(custom_minimum_size.y, child.position.y+2*Controller.NODE_RADIUS)
