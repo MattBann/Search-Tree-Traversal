@@ -90,7 +90,8 @@ func refresh() -> void:
 	if Controller.is_visualisation_running() \
 		and (Controller.get_current_runner().current_stage == Runner.Stages.EXPAND_OUT \
 		or Controller.get_current_runner().current_stage == Runner.Stages.ENQUEUE) \
-		and Controller.get_current_runner().current_node.node_id == from_id:
+		and Controller.get_current_runner().current_node.node_id == from_id \
+		and Controller.get_current_runner().algorithm_variables.get("current_depth", -1) != Controller.get_current_runner().algorithm_variables.get("max_depth", 0):
 			colour = Color.RED
 			# Ensure visible:
 			get_parent().move_child(self, -1)

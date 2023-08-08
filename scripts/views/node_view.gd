@@ -53,6 +53,7 @@ func refresh() -> void:
 			colour = Color.DARK_BLUE
 		if node_id in Controller.get_current_runner().visited:
 			modulate = Color8(160,160,160)
+		else: modulate = Color.WHITE
 	else:
 		modulate = Color.WHITE
 

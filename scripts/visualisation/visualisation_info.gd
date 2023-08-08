@@ -7,6 +7,7 @@ class_name VisualisationInfo
 @onready var expansion_list_label : Label = get_node("PanelContainer2/MarginContainer/ExpansionListLabel")
 @onready var goal_test_label : Label = get_node("GoalTestLabel")
 @onready var queue_label : Label = get_node("PanelContainer3/MarginContainer/QueueLabel")
+@onready var extras_label : Label = get_node("ExtrasLabel")
 
 
 # Connect listeners to signals from the Runner
@@ -22,6 +23,11 @@ func _ready() -> void:
 	runner.queue_changed.connect(_on_queue_changed)
 	var algorithm : SetupData.Algorithm = Controller.get_current_config().get_option("algorithm")
 	algorithm_type_label.text = "Algorithm: " + (SetupData.Algorithm.find_key(algorithm) as String).capitalize()
+	if Controller.get_current_runner().algorithm_variables.has("max_depth"):
+		extras_label.show()
+		extras_label.text = "Max depth: " + str(Controller.get_current_runner().algorithm_variables.get("max_depth", 0))
+	else:
+		extras_label.hide()
 
 
 func _get_node_text(node : VisualisationNodeData) -> String:
@@ -32,6 +38,9 @@ func _get_node_text(node : VisualisationNodeData) -> String:
 # Update text showing the current node and its path cost
 func _on_current_node_changed(current_node : VisualisationNodeData) -> void:
 	current_node_label.text = _get_node_text(current_node)
+	if Controller.get_current_runner().algorithm_variables.has("max_depth"):
+		extras_label.show()
+		extras_label.text = "Max depth: " + str(Controller.get_current_runner().algorithm_variables.get("max_depth", 0))
 
 
 # Update text showing the list of nodes reachable from the current node
