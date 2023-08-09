@@ -101,12 +101,19 @@ func get_option(name : String) -> Variant:
 	return null
 
 
+# Parse and copy over the given saved data (if given) and setup the graph
 func _init(new_data : Dictionary = {}) -> void:
 	if new_data != {}:
-			data = new_data
-			for i in data.get("options", []):
-				if i.get("option_type") == OptionType.COLOUR_PICK and typeof(i.get("value")) == TYPE_STRING:
-					i["value"] = colour_string_to_color(i.get("value", "0, 0, 0, 1"))
+		for i in new_data.get("options", []):
+			# Convert string-based colour data into actual Color objects
+			if i.get("option_type") == OptionType.COLOUR_PICK and typeof(i.get("value")) == TYPE_STRING:
+				i["value"] = colour_string_to_color(i.get("value", "0, 0, 0, 1"))
+			# Copy over all existing options. This is to allow upgrading a save file to a newer version with new options
+			for j in data.get("options", []):
+				if j.get("name", "") == i.get("name", ""):
+					j["value"] = i["value"]
+		data["graph"] = new_data.get("graph", {})
+
 	graph = GraphData.new(data.get("graph", {}))
 
 
