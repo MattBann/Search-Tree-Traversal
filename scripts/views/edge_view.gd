@@ -65,7 +65,7 @@ func refresh() -> void:
 		to_pos = Vector2.ZERO
 	queue_redraw()
 	# Move the direction arrow into place
-	arrow.position = to_pos - ((to_pos.normalized()*Controller.NODE_RADIUS) if not connecting_mode else Vector2.ZERO)
+	arrow.position = to_pos - ((to_pos.normalized()*Controller.get_current_config().get_option("node_size")) if not connecting_mode else Vector2.ZERO)
 	arrow.look_at(arrow.global_position+to_pos)
 	# If enabled, configure and show the edge's weight
 	if Controller.get_current_config().get_option("enable_edge_weights") and edge != null:
@@ -119,7 +119,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# When you click on another node, exit connecting mode and create the edge
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed() and connecting_mode:
 		for node in get_parent().get_children():
-			if node is NodeView and (event.position - (node.global_position)).length() < Controller.NODE_RADIUS and node.node_id != from_id:
+			if node is NodeView and (event.position - (node.global_position)).length() < Controller.get_current_config().get_option("node_size") and node.node_id != from_id:
 				to_id = node.node_id
 				if Controller.get_current_config().get_graph().get_edge(from_id, to_id) != null:
 					queue_free()

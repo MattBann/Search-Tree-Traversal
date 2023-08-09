@@ -19,7 +19,7 @@ enum EditorMode{
 }
 
 
-const NODE_RADIUS := 32
+# const NODE_RADIUS := 32
 
 
 # Global data which is accessible through getters and setters

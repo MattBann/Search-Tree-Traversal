@@ -24,9 +24,9 @@ func _ready() -> void:
 
 # Draw the circle representing the node
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, Controller.NODE_RADIUS, colour)
+	draw_circle(Vector2.ZERO, Controller.get_current_config().get_option("node_size"), colour)
 	if not Controller.get_current_config().get_option("fill_nodes"):
-		draw_circle(Vector2.ZERO, Controller.NODE_RADIUS-4, Color.WHITE)
+		draw_circle(Vector2.ZERO, Controller.get_current_config().get_option("node_size")-4, Color.WHITE)
 
 
 # Update the visual representation of the node based on the currently configured options
@@ -76,22 +76,22 @@ func refresh() -> void:
 	label_edit.add_theme_color_override("font_outline_color", label.label_settings.outline_color)
 
 	# Setup the label and label editor
-	label.custom_minimum_size = Vector2(Controller.NODE_RADIUS*4,Controller.NODE_RADIUS*4)
+	label.custom_minimum_size = Vector2(Controller.get_current_config().get_option("node_size")*4,Controller.get_current_config().get_option("node_size")*4)
 	label.text = node.label
 	var font := label.label_settings.font
 	var words := label.text.split(" ", false)
 	var lw_size := 0
 	for i in words:
 		lw_size = max(font.get_string_size(i).x, lw_size)
-	if lw_size > Controller.NODE_RADIUS*2:
-		label.scale = Vector2.ONE * Controller.NODE_RADIUS*2 / lw_size
+	if lw_size > Controller.get_current_config().get_option("node_size")*2:
+		label.scale = Vector2.ONE * Controller.get_current_config().get_option("node_size")*2 / lw_size
 	else: label.scale = Vector2.ONE
 	label.set_position(-label.get_rect().size/2)
 	label_edit.set_position(-label_edit.get_rect().size/2)
 
 	# Setup the heuristic label
 	heuristic_label.text = str(node.heuristic_value)
-	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
+	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.get_current_config().get_option("node_size")+heuristic_label.get_rect().size.y/2))
 	if Controller.get_current_config().get_option("show_heuristics"):
 		heuristic_label.show()
 	else: 
@@ -134,7 +134,7 @@ func _unhandled_input(event : InputEvent):
 
 	# If the user clicks the node in move mode, start dragging it
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and Controller.get_editor_mode() == Controller.EditorMode.MOVE:
-		if (event.position - global_position).length() < Controller.NODE_RADIUS:
+		if (event.position - global_position).length() < Controller.get_current_config().get_option("node_size"):
 			if not dragging and event.is_pressed():
 				dragging = true
 				drag_offset = event.position - global_position
@@ -150,7 +150,7 @@ func _unhandled_input(event : InputEvent):
 		global_position = (event.position - drag_offset).clamp(parent.global_position, parent.global_position+parent.size)
 		set_node_position()
 	
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and (event.position - global_position).length() < Controller.NODE_RADIUS:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and (event.position - global_position).length() < Controller.get_current_config().get_option("node_size"):
 		if not dragging and event.is_pressed():
 			popup_menu.popup_on_parent(get_global_rect())
 			# Prevent other overlapping nodes receiving the same input
@@ -164,7 +164,7 @@ func set_node_position() -> void:
 		return
 	node.position = position
 	heuristic_label.text = str(node.heuristic_value)
-	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.NODE_RADIUS+heuristic_label.get_rect().size.y/2))
+	heuristic_label.set_position((-heuristic_label.get_rect().size/2)+Vector2(0,Controller.get_current_config().get_option("node_size")+heuristic_label.get_rect().size.y/2))
 	if not dragging:
 		Controller.register_graph_change()
 

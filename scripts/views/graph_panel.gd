@@ -64,11 +64,11 @@ func _gui_input(event: InputEvent) -> void:
 		elif Controller.get_editor_mode() == Controller.EditorMode.CONNECT:
 			for edge in get_children():
 				if edge is EdgeView and edge.connecting_mode:
-					if (event.position - (edge.position)).length() < Controller.NODE_RADIUS:
+					if (event.position - (edge.position)).length() < Controller.get_current_config().get_option("node_size"):
 						edge.queue_free()
 					return
 			for node in get_children():
-				if node is NodeView and (event.position - (node.position)).length() < Controller.NODE_RADIUS:
+				if node is NodeView and (event.position - (node.position)).length() < Controller.get_current_config().get_option("node_size"):
 					var edge := edge_packed_scene.instantiate()
 					edge.connecting_mode = true
 					edge.from_id = node.node_id
@@ -93,5 +93,5 @@ func refresh() -> void:
 			child.refresh()
 		if child.has_method("update_right_click_menu"):
 			child.update_right_click_menu()
-		custom_minimum_size.x = max(custom_minimum_size.x, child.position.x+2*Controller.NODE_RADIUS)
-		custom_minimum_size.y = max(custom_minimum_size.y, child.position.y+2*Controller.NODE_RADIUS)
+		custom_minimum_size.x = max(custom_minimum_size.x, child.position.x+2*Controller.get_current_config().get_option("node_size"))
+		custom_minimum_size.y = max(custom_minimum_size.y, child.position.y+2*Controller.get_current_config().get_option("node_size"))
