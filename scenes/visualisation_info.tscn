@@ -35,9 +35,6 @@ script = ExtResource("1_ck75f")
 [node name="AlgorithmTypeLabel" type="Label" parent="."]
 layout_mode = 2
 
-[node name="CurrentStageLabel" type="Label" parent="."]
-layout_mode = 2
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Current Node:"
@@ -101,6 +98,3 @@ theme = ExtResource("2_ji4v4")
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 vertical_alignment = 1
-
-[node name="ExtrasLabel" type="Label" parent="."]
-layout_mode = 2
