@@ -57,6 +57,16 @@ enum OptionType {
 			value = true,
 		},
 		{
+			name = "node_size",
+			option_type = OptionType.SPIN,
+			value_type = {
+				min = 16,
+				max = 64,
+				step = 1
+			},
+			value = 32
+		},
+		{
 			name = "enable_edge_weights",
 			option_type = OptionType.SWITCH,
 			value_type = TYPE_BOOL,
@@ -77,16 +87,6 @@ enum OptionType {
 				step = 1
 			},
 			value = 10,
-		},
-		{
-			name = "node_size",
-			option_type = OptionType.SPIN,
-			value_type = {
-				min = 16,
-				max = 64,
-				step = 1
-			},
-			value = 32
 		},
 		{
 			name = "force_uniform_path_cost",
