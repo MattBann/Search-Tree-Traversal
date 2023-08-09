@@ -59,17 +59,17 @@ func refresh() -> void:
 
 	# Adjust label colour to be more easily readable
 	if colour.get_luminance() < 0.5 and Controller.get_current_config().get_option("fill_nodes"):
-		label.modulate = Color.WHITE
+		label.label_settings.font_color = Color.WHITE
 		label.label_settings.outline_size = 3
 	else:
-		label.modulate = Color.BLACK
+		label.label_settings.font_color = Color.BLACK
 		label.label_settings.outline_size = 1
 
 	# Give the label an outline so it can be read if outside the node circle
 	label.label_settings.outline_color = colour
 
 	# Replicate settings for label_edit
-	label_edit.modulate = label.modulate
+	label_edit.add_theme_color_override("font_color", label.label_settings.font_color)
 	# label_edit.outline_size = label.label_settings.outline_size
 	label_edit.add_theme_constant_override("outline_size", label.label_settings.outline_size)
 	# label_edit.font_outline_color = label.label_settings.outline_color

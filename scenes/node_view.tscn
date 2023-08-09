@@ -6,6 +6,7 @@
 font_names = PackedStringArray("Sans-Serif")
 
 [sub_resource type="LabelSettings" id="LabelSettings_01s7k"]
+resource_local_to_scene = true
 font = SubResource("SystemFont_5erfn")
 font_size = 24
 outline_size = 2
