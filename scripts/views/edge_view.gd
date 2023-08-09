@@ -133,17 +133,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	# If right clicking on (or close to) the edge, open the context menu
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed() and not connecting_mode:
-		var p := get_global_mouse_position() - global_position
-		var proj := p.dot(to_pos)
-		var ablen_sqr := to_pos.length_squared()
+		var offset : Vector2 = to_pos.normalized()*Controller.get_current_config().get_option("node_size")
+		var p := get_global_mouse_position() - (global_position + offset)
+		var to := to_pos - offset*2
+		var proj := p.dot(to)
+		var ablen_sqr := to.length_squared()
 		var d := proj / ablen_sqr
 		var cp : Vector2
 		if d <= 0:
 			cp = Vector2.ZERO
 		elif d >= 1:
-			cp = to_pos
+			cp = to
 		else:
-			cp = to_pos * d
+			cp = to * d
 		if (cp-p).length_squared() < 25.0 :
 			popup_menu.popup_on_parent(get_global_rect())
 			popup_menu.position += Vector2i(get_local_mouse_position().floor())
