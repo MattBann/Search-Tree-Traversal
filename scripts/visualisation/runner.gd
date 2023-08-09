@@ -7,6 +7,7 @@ signal expansion_list_changed(new_expansion_list:Array[VisualisationNodeData])
 signal found_path(goal_data:VisualisationNodeData)
 signal goal_test_failed
 signal queue_changed(new_queue:Array[VisualisationNodeData])
+signal runner_stepped(new_stage:Stages)
 
 
 # The sequential, repeating steps the algorithm steps through
@@ -75,6 +76,7 @@ func step() -> void:
 	if completed_path:
 		Controller.abort_visualisation()
 		return
+	runner_stepped.emit(current_stage)
 	match (current_stage):
 		(Stages.SELECT_NODE):
 			# Pop a node from the front of the queue. If node is visited, try again
