@@ -87,16 +87,21 @@ func refresh() -> void:
 		weight_label_arrow.hide()
 	
 	# If visualisation is running, apply a different colour when necessary
-	if Controller.is_visualisation_running() \
-		and (Controller.get_current_runner().current_stage == Runner.Stages.EXPAND_OUT \
-		or Controller.get_current_runner().current_stage == Runner.Stages.ENQUEUE) \
-		and Controller.get_current_runner().current_node.node_id == from_id \
-		and Controller.get_current_runner().algorithm_variables.get("current_depth", -1) != Controller.get_current_runner().algorithm_variables.get("max_depth", 0):
-			colour = Color.RED
-			# Ensure visible:
-			get_parent().move_child(self, -1)
-	else:
-		colour = Color.BLACK
+	colour = Color.BLACK
+	if Controller.is_visualisation_running():
+		if (Controller.get_current_runner().current_stage == Runner.Stages.EXPAND_OUT \
+			or Controller.get_current_runner().current_stage == Runner.Stages.ENQUEUE) \
+			and Controller.get_current_runner().current_node.node_id == from_id \
+			and Controller.get_current_runner().algorithm_variables.get("current_depth", -1) != Controller.get_current_runner().algorithm_variables.get("max_depth", 0):
+				colour = Color.RED
+				# Ensure visible:
+				get_parent().move_child(self, -1)
+		elif Controller.get_current_runner().is_edge_in_path(from_id, to_id):
+			colour = Color.GREEN
+			# Ensure visible, but below the corresponding edge if its red
+			get_parent().move_child(self, -2)
+		else:
+			get_parent().move_child(self, -3)
 	
 	# Apply colour to arrow:
 	arrow.color = colour

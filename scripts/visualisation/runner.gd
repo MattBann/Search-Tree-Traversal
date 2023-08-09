@@ -47,6 +47,29 @@ func _init() -> void:
 		algorithm_variables["depth_stack"] = [0]
 
 
+static func get_path_to_node(node : VisualisationNodeData) -> String:
+	var s := ""
+	s += str(node.node_id)
+	var n := node.previous_node
+	while n:
+		s += " >- " + str(n.node_id)
+		n = n.previous_node
+	var path := ""
+	for i in range(s.length() - 1, -1, -1):
+		path += s[i]
+	return path
+
+
+func is_edge_in_path(from_id : int, to_id : int) -> bool:
+	var n := current_node
+	while n and n.previous_node:
+		if n.node_id == to_id and n.previous_node.node_id == from_id:
+			return true
+		else:
+			n = n.previous_node
+	return false
+
+
 # Execute the next stage of the algorithm from the steps in Stages
 func step() -> void:
 	if completed_path:
@@ -77,13 +100,7 @@ func step() -> void:
 					found_path.emit(current_node)
 					if OS.is_debug_build():
 						print("Found Path:")
-						var s := ""
-						s += str(current_node.node_id)
-						var n := current_node.previous_node
-						while n:
-							s += " <- " + str(n.node_id)
-							n = n.previous_node
-						print(s)
+						print(Runner.get_path_to_node(current_node))
 						print("With path length " + str(current_node.cost))
 					Controller.register_graph_change()
 					return
