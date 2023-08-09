@@ -1,0 +1,465 @@
+{
+	"graph": {
+		"edges": [
+			{
+				"from": 0,
+				"to": 1,
+				"weight": 140
+			},
+			{
+				"from": 1,
+				"to": 0,
+				"weight": 140
+			},
+			{
+				"from": 1,
+				"to": 2,
+				"weight": 75
+			},
+			{
+				"from": 2,
+				"to": 1,
+				"weight": 75
+			},
+			{
+				"from": 2,
+				"to": 3,
+				"weight": 71
+			},
+			{
+				"from": 3,
+				"to": 2,
+				"weight": 71
+			},
+			{
+				"from": 1,
+				"to": 4,
+				"weight": 118
+			},
+			{
+				"from": 4,
+				"to": 1,
+				"weight": 118
+			},
+			{
+				"from": 4,
+				"to": 5,
+				"weight": 111
+			},
+			{
+				"from": 5,
+				"to": 4,
+				"weight": 111
+			},
+			{
+				"from": 5,
+				"to": 6,
+				"weight": 70
+			},
+			{
+				"from": 6,
+				"to": 5,
+				"weight": 70
+			},
+			{
+				"from": 6,
+				"to": 7,
+				"weight": 75
+			},
+			{
+				"from": 7,
+				"to": 6,
+				"weight": 75
+			},
+			{
+				"from": 7,
+				"to": 8,
+				"weight": 120
+			},
+			{
+				"from": 8,
+				"to": 7,
+				"weight": 120
+			},
+			{
+				"from": 8,
+				"to": 9,
+				"weight": 146
+			},
+			{
+				"from": 9,
+				"to": 8,
+				"weight": 146
+			},
+			{
+				"from": 9,
+				"to": 0,
+				"weight": 80
+			},
+			{
+				"from": 0,
+				"to": 9,
+				"weight": 80
+			},
+			{
+				"from": 9,
+				"to": 11,
+				"weight": 97
+			},
+			{
+				"from": 11,
+				"to": 9,
+				"weight": 97
+			},
+			{
+				"from": 11,
+				"to": 8,
+				"weight": 138
+			},
+			{
+				"from": 8,
+				"to": 11,
+				"weight": 138
+			},
+			{
+				"from": 11,
+				"to": 12,
+				"weight": 101
+			},
+			{
+				"from": 12,
+				"to": 11,
+				"weight": 101
+			},
+			{
+				"from": 10,
+				"to": 12,
+				"weight": 211
+			},
+			{
+				"from": 12,
+				"to": 10,
+				"weight": 211
+			},
+			{
+				"from": 10,
+				"to": 0,
+				"weight": 99
+			},
+			{
+				"from": 0,
+				"to": 10,
+				"weight": 99
+			},
+			{
+				"from": 13,
+				"to": 12,
+				"weight": 90
+			},
+			{
+				"from": 12,
+				"to": 13,
+				"weight": 90
+			},
+			{
+				"from": 12,
+				"to": 14,
+				"weight": 86
+			},
+			{
+				"from": 14,
+				"to": 12,
+				"weight": 86
+			},
+			{
+				"from": 14,
+				"to": 15,
+				"weight": 98
+			},
+			{
+				"from": 15,
+				"to": 14,
+				"weight": 98
+			},
+			{
+				"from": 15,
+				"to": 16,
+				"weight": 86
+			},
+			{
+				"from": 16,
+				"to": 15,
+				"weight": 86
+			},
+			{
+				"from": 15,
+				"to": 17,
+				"weight": 142
+			},
+			{
+				"from": 17,
+				"to": 15,
+				"weight": 142
+			},
+			{
+				"from": 17,
+				"to": 18,
+				"weight": 92
+			},
+			{
+				"from": 18,
+				"to": 17,
+				"weight": 92
+			},
+			{
+				"from": 18,
+				"to": 19,
+				"weight": 87
+			},
+			{
+				"from": 19,
+				"to": 18,
+				"weight": 87
+			}
+		],
+		"next_id": 20,
+		"nodes": [
+			{
+				"heuristic_value": 237,
+				"id": 0,
+				"is_goal": false,
+				"is_start": true,
+				"label": "Sibiu",
+				"position": "(568, 348)"
+			},
+			{
+				"heuristic_value": 357,
+				"id": 1,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Arad",
+				"position": "(309, 263)"
+			},
+			{
+				"heuristic_value": 418,
+				"id": 2,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Zerind",
+				"position": "(231, 130)"
+			},
+			{
+				"heuristic_value": 382,
+				"id": 3,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Oradea",
+				"position": "(390, 54)"
+			},
+			{
+				"heuristic_value": 400,
+				"id": 4,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Timisoara",
+				"position": "(165, 361)"
+			},
+			{
+				"heuristic_value": 348,
+				"id": 5,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Lugoj",
+				"position": "(251, 486)"
+			},
+			{
+				"heuristic_value": 335,
+				"id": 6,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Mehadia",
+				"position": "(266, 621)"
+			},
+			{
+				"heuristic_value": 326,
+				"id": 7,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Dobreta",
+				"position": "(296, 744)"
+			},
+			{
+				"heuristic_value": 222,
+				"id": 8,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Craiova",
+				"position": "(538, 775)"
+			},
+			{
+				"heuristic_value": 232,
+				"id": 9,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Rimnicu",
+				"position": "(505, 532)"
+			},
+			{
+				"heuristic_value": 163,
+				"id": 10,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Fagaras",
+				"position": "(811, 330)"
+			},
+			{
+				"heuristic_value": 123,
+				"id": 11,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Pitesti",
+				"position": "(740, 606)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 12,
+				"is_goal": true,
+				"is_start": false,
+				"label": "Bucharest",
+				"position": "(1012, 633)"
+			},
+			{
+				"heuristic_value": 75,
+				"id": 13,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Giurgui",
+				"position": "(918, 771)"
+			},
+			{
+				"heuristic_value": 94,
+				"id": 14,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Urziceni",
+				"position": "(1201, 543)"
+			},
+			{
+				"heuristic_value": 182,
+				"id": 15,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Hirsova",
+				"position": "(1406, 536)"
+			},
+			{
+				"heuristic_value": 195,
+				"id": 16,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Eforie",
+				"position": "(1435, 734)"
+			},
+			{
+				"heuristic_value": 248,
+				"id": 17,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Vaslui",
+				"position": "(1459, 307)"
+			},
+			{
+				"heuristic_value": 276,
+				"id": 18,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Iasi",
+				"position": "(1372, 136)"
+			},
+			{
+				"heuristic_value": 275,
+				"id": 19,
+				"is_goal": false,
+				"is_start": false,
+				"label": "Neamt",
+				"position": "(1219, 57)"
+			}
+		]
+	},
+	"options": [
+		{
+			"name": "algorithm",
+			"option_type": 0,
+			"value": 2,
+			"value_type": {
+				"A_STAR_SEARCH": 3,
+				"BREADTH_FIRST_SEARCH": 0,
+				"DEPTH_FIRST_SEARCH": 1,
+				"ITERATIVE_DEEPENING_DEPTH_FIRST_SEARCH": 4,
+				"UNIFORM_COST_SEARCH": 2
+			}
+		},
+		{
+			"name": "start_colour",
+			"option_type": 1,
+			"value": "(0, 1, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "goal_colour",
+			"option_type": 1,
+			"value": "(1, 0.6471, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "node_colour",
+			"option_type": 1,
+			"value": "(0.5294, 0.8078, 0.9804, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "fill_nodes",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "node_size",
+			"option_type": 4,
+			"value": 50,
+			"value_type": {
+				"max": 64,
+				"min": 16,
+				"step": 1
+			}
+		},
+		{
+			"name": "enable_edge_weights",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "show_heuristics",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "distance_scale",
+			"option_type": 4,
+			"value": 45,
+			"value_type": {
+				"max": 100,
+				"min": 1,
+				"step": 1
+			}
+		},
+		{
+			"name": "force_uniform_path_cost",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		}
+	]
+}

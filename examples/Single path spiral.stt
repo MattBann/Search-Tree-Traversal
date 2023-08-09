@@ -1,0 +1,288 @@
+{
+	"graph": {
+		"edges": [
+			{
+				"from": 0,
+				"to": 1,
+				"weight": 1
+			},
+			{
+				"from": 1,
+				"to": 2,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 3,
+				"to": 4,
+				"weight": 1
+			},
+			{
+				"from": 4,
+				"to": 5,
+				"weight": 1
+			},
+			{
+				"from": 5,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 7,
+				"weight": 1
+			},
+			{
+				"from": 7,
+				"to": 8,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 9,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 10,
+				"weight": 1
+			},
+			{
+				"from": 10,
+				"to": 11,
+				"weight": 1
+			},
+			{
+				"from": 11,
+				"to": 12,
+				"weight": 1
+			},
+			{
+				"from": 12,
+				"to": 13,
+				"weight": 1
+			},
+			{
+				"from": 13,
+				"to": 14,
+				"weight": 1
+			},
+			{
+				"from": 14,
+				"to": 15,
+				"weight": 1
+			}
+		],
+		"next_id": 16,
+		"nodes": [
+			{
+				"heuristic_value": 28,
+				"id": 0,
+				"is_goal": false,
+				"is_start": true,
+				"label": "0",
+				"position": "(337, 325)"
+			},
+			{
+				"heuristic_value": 23,
+				"id": 1,
+				"is_goal": false,
+				"is_start": false,
+				"label": "1",
+				"position": "(388, 247)"
+			},
+			{
+				"heuristic_value": 35,
+				"id": 2,
+				"is_goal": false,
+				"is_start": false,
+				"label": "2",
+				"position": "(444, 351)"
+			},
+			{
+				"heuristic_value": 38,
+				"id": 3,
+				"is_goal": false,
+				"is_start": false,
+				"label": "3",
+				"position": "(334, 433)"
+			},
+			{
+				"heuristic_value": 29,
+				"id": 4,
+				"is_goal": false,
+				"is_start": false,
+				"label": "4",
+				"position": "(219, 358)"
+			},
+			{
+				"heuristic_value": 17,
+				"id": 5,
+				"is_goal": false,
+				"is_start": false,
+				"label": "5",
+				"position": "(242, 233)"
+			},
+			{
+				"heuristic_value": 14,
+				"id": 6,
+				"is_goal": false,
+				"is_start": false,
+				"label": "6",
+				"position": "(352, 158)"
+			},
+			{
+				"heuristic_value": 28,
+				"id": 7,
+				"is_goal": false,
+				"is_start": false,
+				"label": "7",
+				"position": "(494, 185)"
+			},
+			{
+				"heuristic_value": 41,
+				"id": 8,
+				"is_goal": false,
+				"is_start": false,
+				"label": "8",
+				"position": "(555, 325)"
+			},
+			{
+				"heuristic_value": 48,
+				"id": 9,
+				"is_goal": false,
+				"is_start": false,
+				"label": "9",
+				"position": "(535, 449)"
+			},
+			{
+				"heuristic_value": 49,
+				"id": 10,
+				"is_goal": false,
+				"is_start": false,
+				"label": "10",
+				"position": "(411, 526)"
+			},
+			{
+				"heuristic_value": 47,
+				"id": 11,
+				"is_goal": false,
+				"is_start": false,
+				"label": "11",
+				"position": "(242, 537)"
+			},
+			{
+				"heuristic_value": 41,
+				"id": 12,
+				"is_goal": false,
+				"is_start": false,
+				"label": "12",
+				"position": "(129, 456)"
+			},
+			{
+				"heuristic_value": 28,
+				"id": 13,
+				"is_goal": false,
+				"is_start": false,
+				"label": "13",
+				"position": "(99, 305)"
+			},
+			{
+				"heuristic_value": 14,
+				"id": 14,
+				"is_goal": false,
+				"is_start": false,
+				"label": "14",
+				"position": "(128, 159)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 15,
+				"is_goal": true,
+				"is_start": false,
+				"label": "15",
+				"position": "(240, 61)"
+			}
+		]
+	},
+	"options": [
+		{
+			"name": "algorithm",
+			"option_type": 0,
+			"value": 0,
+			"value_type": {
+				"A_STAR_SEARCH": 3,
+				"BREADTH_FIRST_SEARCH": 0,
+				"DEPTH_FIRST_SEARCH": 1,
+				"ITERATIVE_DEEPENING_DEPTH_FIRST_SEARCH": 4,
+				"UNIFORM_COST_SEARCH": 2
+			}
+		},
+		{
+			"name": "start_colour",
+			"option_type": 1,
+			"value": "(0, 1, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "goal_colour",
+			"option_type": 1,
+			"value": "(1, 0.6471, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "node_colour",
+			"option_type": 1,
+			"value": "(0.5294, 0.8078, 0.9804, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "fill_nodes",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "node_size",
+			"option_type": 4,
+			"value": 32,
+			"value_type": {
+				"max": 64,
+				"min": 16,
+				"step": 1
+			}
+		},
+		{
+			"name": "enable_edge_weights",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "show_heuristics",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "distance_scale",
+			"option_type": 4,
+			"value": 10,
+			"value_type": {
+				"max": 100,
+				"min": 1,
+				"step": 1
+			}
+		},
+		{
+			"name": "force_uniform_path_cost",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		}
+	]
+}

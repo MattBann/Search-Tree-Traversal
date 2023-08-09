@@ -1,0 +1,561 @@
+{
+	"graph": {
+		"edges": [
+			{
+				"from": 0,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 3,
+				"to": 8,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 7,
+				"weight": 1
+			},
+			{
+				"from": 7,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 15,
+				"weight": 1
+			},
+			{
+				"from": 15,
+				"to": 16,
+				"weight": 1
+			},
+			{
+				"from": 16,
+				"to": 17,
+				"weight": 1
+			},
+			{
+				"from": 17,
+				"to": 18,
+				"weight": 1
+			},
+			{
+				"from": 18,
+				"to": 19,
+				"weight": 1
+			},
+			{
+				"from": 19,
+				"to": 12,
+				"weight": 1
+			},
+			{
+				"from": 12,
+				"to": 11,
+				"weight": 1
+			},
+			{
+				"from": 11,
+				"to": 20,
+				"weight": 1
+			},
+			{
+				"from": 20,
+				"to": 21,
+				"weight": 1
+			},
+			{
+				"from": 21,
+				"to": 22,
+				"weight": 1
+			},
+			{
+				"from": 22,
+				"to": 23,
+				"weight": 1
+			},
+			{
+				"from": 23,
+				"to": 26,
+				"weight": 1
+			},
+			{
+				"from": 23,
+				"to": 24,
+				"weight": 1
+			},
+			{
+				"from": 24,
+				"to": 25,
+				"weight": 1
+			},
+			{
+				"from": 25,
+				"to": 24,
+				"weight": 1
+			},
+			{
+				"from": 24,
+				"to": 23,
+				"weight": 1
+			},
+			{
+				"from": 23,
+				"to": 22,
+				"weight": 1
+			},
+			{
+				"from": 22,
+				"to": 21,
+				"weight": 1
+			},
+			{
+				"from": 21,
+				"to": 20,
+				"weight": 1
+			},
+			{
+				"from": 20,
+				"to": 11,
+				"weight": 1
+			},
+			{
+				"from": 11,
+				"to": 12,
+				"weight": 1
+			},
+			{
+				"from": 12,
+				"to": 19,
+				"weight": 1
+			},
+			{
+				"from": 19,
+				"to": 18,
+				"weight": 1
+			},
+			{
+				"from": 18,
+				"to": 17,
+				"weight": 1
+			},
+			{
+				"from": 17,
+				"to": 16,
+				"weight": 1
+			},
+			{
+				"from": 16,
+				"to": 15,
+				"weight": 1
+			},
+			{
+				"from": 15,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 7,
+				"weight": 1
+			},
+			{
+				"from": 7,
+				"to": 8,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 3,
+				"to": 4,
+				"weight": 1
+			},
+			{
+				"from": 4,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 5,
+				"weight": 1
+			},
+			{
+				"from": 5,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 18,
+				"to": 13,
+				"weight": 1
+			},
+			{
+				"from": 13,
+				"to": 14,
+				"weight": 1
+			},
+			{
+				"from": 14,
+				"to": 13,
+				"weight": 1
+			},
+			{
+				"from": 13,
+				"to": 18,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 9,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 2,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 1,
+				"weight": 1
+			},
+			{
+				"from": 1,
+				"to": 10,
+				"weight": 1
+			},
+			{
+				"from": 10,
+				"to": 9,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 10,
+				"weight": 1
+			},
+			{
+				"from": 10,
+				"to": 1,
+				"weight": 1
+			},
+			{
+				"from": 1,
+				"to": 2,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 9,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 8,
+				"weight": 1
+			}
+		],
+		"next_id": 27,
+		"nodes": [
+			{
+				"heuristic_value": 76,
+				"id": 0,
+				"is_goal": false,
+				"is_start": true,
+				"label": "0",
+				"position": "(123, 274)"
+			},
+			{
+				"heuristic_value": 64,
+				"id": 1,
+				"is_goal": false,
+				"is_start": false,
+				"label": "1",
+				"position": "(283, 513)"
+			},
+			{
+				"heuristic_value": 61,
+				"id": 2,
+				"is_goal": false,
+				"is_start": false,
+				"label": "2",
+				"position": "(281, 389)"
+			},
+			{
+				"heuristic_value": 60,
+				"id": 3,
+				"is_goal": false,
+				"is_start": false,
+				"label": "3",
+				"position": "(284, 275)"
+			},
+			{
+				"heuristic_value": 61,
+				"id": 4,
+				"is_goal": false,
+				"is_start": false,
+				"label": "4",
+				"position": "(284, 160)"
+			},
+			{
+				"heuristic_value": 64,
+				"id": 5,
+				"is_goal": false,
+				"is_start": false,
+				"label": "5",
+				"position": "(282, 42)"
+			},
+			{
+				"heuristic_value": 54,
+				"id": 6,
+				"is_goal": false,
+				"is_start": false,
+				"label": "6",
+				"position": "(393, 41)"
+			},
+			{
+				"heuristic_value": 50,
+				"id": 7,
+				"is_goal": false,
+				"is_start": false,
+				"label": "7",
+				"position": "(391, 156)"
+			},
+			{
+				"heuristic_value": 49,
+				"id": 8,
+				"is_goal": false,
+				"is_start": false,
+				"label": "8",
+				"position": "(389, 276)"
+			},
+			{
+				"heuristic_value": 50,
+				"id": 9,
+				"is_goal": false,
+				"is_start": false,
+				"label": "9",
+				"position": "(387, 395)"
+			},
+			{
+				"heuristic_value": 54,
+				"id": 10,
+				"is_goal": false,
+				"is_start": false,
+				"label": "10",
+				"position": "(388, 513)"
+			},
+			{
+				"heuristic_value": 44,
+				"id": 11,
+				"is_goal": false,
+				"is_start": false,
+				"label": "11",
+				"position": "(497, 510)"
+			},
+			{
+				"heuristic_value": 40,
+				"id": 12,
+				"is_goal": false,
+				"is_start": false,
+				"label": "12",
+				"position": "(496, 393)"
+			},
+			{
+				"heuristic_value": 38,
+				"id": 13,
+				"is_goal": false,
+				"is_start": false,
+				"label": "13",
+				"position": "(497, 276)"
+			},
+			{
+				"heuristic_value": 40,
+				"id": 14,
+				"is_goal": false,
+				"is_start": false,
+				"label": "14",
+				"position": "(498, 156)"
+			},
+			{
+				"heuristic_value": 45,
+				"id": 15,
+				"is_goal": false,
+				"is_start": false,
+				"label": "15",
+				"position": "(498, 41)"
+			},
+			{
+				"heuristic_value": 36,
+				"id": 16,
+				"is_goal": false,
+				"is_start": false,
+				"label": "16",
+				"position": "(607, 45)"
+			},
+			{
+				"heuristic_value": 30,
+				"id": 17,
+				"is_goal": false,
+				"is_start": false,
+				"label": "17",
+				"position": "(606, 155)"
+			},
+			{
+				"heuristic_value": 28,
+				"id": 18,
+				"is_goal": false,
+				"is_start": false,
+				"label": "18",
+				"position": "(603, 278)"
+			},
+			{
+				"heuristic_value": 29,
+				"id": 19,
+				"is_goal": false,
+				"is_start": false,
+				"label": "19",
+				"position": "(606, 391)"
+			},
+			{
+				"heuristic_value": 35,
+				"id": 20,
+				"is_goal": false,
+				"is_start": false,
+				"label": "20",
+				"position": "(605, 511)"
+			},
+			{
+				"heuristic_value": 27,
+				"id": 21,
+				"is_goal": false,
+				"is_start": false,
+				"label": "21",
+				"position": "(722, 510)"
+			},
+			{
+				"heuristic_value": 19,
+				"id": 22,
+				"is_goal": false,
+				"is_start": false,
+				"label": "22",
+				"position": "(720, 390)"
+			},
+			{
+				"heuristic_value": 16,
+				"id": 23,
+				"is_goal": false,
+				"is_start": false,
+				"label": "23",
+				"position": "(721, 278)"
+			},
+			{
+				"heuristic_value": 21,
+				"id": 24,
+				"is_goal": false,
+				"is_start": false,
+				"label": "24",
+				"position": "(720, 154)"
+			},
+			{
+				"heuristic_value": 29,
+				"id": 25,
+				"is_goal": false,
+				"is_start": false,
+				"label": "25",
+				"position": "(721, 42)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 26,
+				"is_goal": true,
+				"is_start": false,
+				"label": "26",
+				"position": "(884, 286)"
+			}
+		]
+	},
+	"options": [
+		{
+			"name": "algorithm",
+			"option_type": 0,
+			"value": 0,
+			"value_type": {
+				"A_STAR_SEARCH": 3,
+				"BREADTH_FIRST_SEARCH": 0,
+				"DEPTH_FIRST_SEARCH": 1,
+				"ITERATIVE_DEEPENING_DEPTH_FIRST_SEARCH": 4,
+				"UNIFORM_COST_SEARCH": 2
+			}
+		},
+		{
+			"name": "start_colour",
+			"option_type": 1,
+			"value": "(0, 1, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "goal_colour",
+			"option_type": 1,
+			"value": "(1, 0.6471, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "node_colour",
+			"option_type": 1,
+			"value": "(0.5294, 0.8078, 0.9804, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "fill_nodes",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "node_size",
+			"option_type": 4,
+			"value": 32,
+			"value_type": {
+				"max": 64,
+				"min": 16,
+				"step": 1
+			}
+		},
+		{
+			"name": "enable_edge_weights",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "show_heuristics",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "distance_scale",
+			"option_type": 4,
+			"value": 10,
+			"value_type": {
+				"max": 100,
+				"min": 1,
+				"step": 1
+			}
+		},
+		{
+			"name": "force_uniform_path_cost",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		}
+	]
+}
