@@ -58,8 +58,10 @@ func _on_goal_test_fail() -> void:
 
 
 # Update text to say that the current node is a goal node
-func _on_path_found(_path) -> void:
-	goal_test_label.text = Controller.get_current_config().get_graph().get_node(Controller.get_current_runner().current_node.node_id).label + "is the goal state, so a path has been found!"
+func _on_path_found(goal_node) -> void:
+	goal_test_label.text = Controller.get_current_config().get_graph().get_node(Controller.get_current_runner().current_node.node_id).label \
+		+ " is the goal state, so a path has been found!\nThe path is:\n" \
+		+ Runner.get_path_to_node(goal_node) + "\nWith a cost of " + str(goal_node.cost)
 
 
 # Update text showing the queue of nodes waiting to become current node
