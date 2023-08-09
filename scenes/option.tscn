@@ -38,7 +38,6 @@ size_flags_horizontal = 3
 [node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-suffix = "%"
 select_all_on_focus = true
 
 [connection signal="item_selected" from="HBoxContainer/OptionList" to="." method="_on_option_list_item_selected"]
