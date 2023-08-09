@@ -125,7 +125,8 @@ func on_file_menu_item_pressed(id : int) -> void:
 				Controller.web_load()
 				return
 			# Open an open file dialog and prevent input to the program
-			file_open_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+			file_open_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) if Controller.current_file == "" \
+				else Controller.current_file.get_base_dir()
 			file_open_dialog.popup_centered()
 			get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_STOP
 		(3):
@@ -135,7 +136,10 @@ func on_file_menu_item_pressed(id : int) -> void:
 
 # Open a save file dialog and prevent input to the program
 func save_as() -> void:
-	file_save_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	if Controller.current_file == "":
+		file_save_dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS)
+	else:
+		file_save_dialog.current_path = Controller.current_file
 	file_save_dialog.popup_centered()
 	get_node("/root/UI").mouse_filter = Control.MOUSE_FILTER_STOP
 
