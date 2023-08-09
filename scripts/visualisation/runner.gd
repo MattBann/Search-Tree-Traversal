@@ -60,6 +60,16 @@ static func get_path_to_node(node : VisualisationNodeData) -> String:
 	return path
 
 
+func is_edge_in_path(from_id : int, to_id : int) -> bool:
+	var n := current_node
+	while n and n.previous_node:
+		if n.node_id == to_id and n.previous_node.node_id == from_id:
+			return true
+		else:
+			n = n.previous_node
+	return false
+
+
 # Execute the next stage of the algorithm from the steps in Stages
 func step() -> void:
 	if completed_path:
