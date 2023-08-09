@@ -60,12 +60,32 @@ func refresh() -> void:
 	# Adjust label colour to be more easily readable
 	if colour.get_luminance() < 0.5 and Controller.get_current_config().get_option("fill_nodes"):
 		label.modulate = Color.WHITE
+		label.label_settings.outline_size = 3
 	else:
 		label.modulate = Color.BLACK
+		label.label_settings.outline_size = 1
+
+	# Give the label an outline so it can be read if outside the node circle
+	label.label_settings.outline_color = colour
+
+	# Replicate settings for label_edit
+	label_edit.modulate = label.modulate
+	# label_edit.outline_size = label.label_settings.outline_size
+	label_edit.add_theme_constant_override("outline_size", label.label_settings.outline_size)
+	# label_edit.font_outline_color = label.label_settings.outline_color
+	label_edit.add_theme_color_override("font_outline_color", label.label_settings.outline_color)
 
 	# Setup the label and label editor
-	label.custom_minimum_size = Vector2(64,64)
+	label.custom_minimum_size = Vector2(Controller.NODE_RADIUS*4,Controller.NODE_RADIUS*4)
 	label.text = node.label
+	var font := label.label_settings.font
+	var words := label.text.split(" ", false)
+	var lw_size := 0
+	for i in words:
+		lw_size = max(font.get_string_size(i).x, lw_size)
+	if lw_size > Controller.NODE_RADIUS*2:
+		label.scale = Vector2.ONE * Controller.NODE_RADIUS*2 / lw_size
+	else: label.scale = Vector2.ONE
 	label.set_position(-label.get_rect().size/2)
 	label_edit.set_position(-label_edit.get_rect().size/2)
 
@@ -182,7 +202,7 @@ func _on_convert_submenu_id_pressed(id:int):
 	Controller.register_graph_change()
 
 
-# Exit the label editor when a new label is submitted (labels limited to 8 characters)
+# Exit the label editor when a new label is submitted (labels limited to 16 characters)
 func _on_label_edit_text_submitted(new_text:String):
 	Controller.get_current_config().get_graph().get_node(node_id).label = new_text
 	label_edit.hide()
