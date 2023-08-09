@@ -3,6 +3,7 @@ class_name VisualisationInfo
 
 
 @onready var algorithm_type_label : Label = get_node("AlgorithmTypeLabel")
+@onready var current_stage_label : Label = get_node("CurrentStageLabel")
 @onready var current_node_label : Label = get_node("PanelContainer/MarginContainer/CurrentNodeLabel")
 @onready var expansion_list_label : Label = get_node("PanelContainer2/MarginContainer/ExpansionListLabel")
 @onready var goal_test_label : Label = get_node("GoalTestLabel")
@@ -16,6 +17,7 @@ func _ready() -> void:
 	if runner == null:
 		queue_free()
 		return
+	runner.runner_stepped.connect(_on_runner_stepped)
 	runner.current_node_changed.connect(_on_current_node_changed)
 	runner.expansion_list_changed.connect(_on_expansion_list_changed)
 	runner.goal_test_failed.connect(_on_goal_test_fail)
@@ -28,6 +30,11 @@ func _ready() -> void:
 		extras_label.text = "Max depth: " + str(Controller.get_current_runner().algorithm_variables.get("max_depth", 0))
 	else:
 		extras_label.hide()
+	_on_runner_stepped()
+
+
+func _on_runner_stepped(new_stage : Runner.Stages = Runner.Stages.SELECT_NODE) -> void:
+	current_stage_label.text = "Current step: " + Runner.Stages.find_key(new_stage).capitalize()
 
 
 func _get_node_text(node : VisualisationNodeData) -> String:
