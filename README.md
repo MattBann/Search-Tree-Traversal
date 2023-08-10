@@ -60,6 +60,7 @@ The panel on the left gives you a range of options to change the appearance and 
 
 Once you have setup your graph, you can save it by clicking File->Save in the right-hand corner of the top bar, which saves the graph and options in a plain-text json file with the extension '.stt'.
 You can then load this file using File->Open.
+There are some pre-made examples in this repository ([here](/examples)) which might be useful for seeing what's possible
 
 Note: in the web version, pressing save will download the file as 'search_tree.stt', as such there is no 'Save as' option. 
 Opening a file is treated as a file upload (though it is kept local to your machine) with a 30 second timeout
