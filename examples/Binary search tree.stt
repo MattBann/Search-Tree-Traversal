@@ -1,0 +1,483 @@
+{
+	"graph": {
+		"edges": [
+			{
+				"from": 0,
+				"to": 1,
+				"weight": 1
+			},
+			{
+				"from": 1,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 1,
+				"to": 4,
+				"weight": 1
+			},
+			{
+				"from": 0,
+				"to": 2,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 5,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 3,
+				"to": 7,
+				"weight": 1
+			},
+			{
+				"from": 3,
+				"to": 8,
+				"weight": 1
+			},
+			{
+				"from": 4,
+				"to": 9,
+				"weight": 1
+			},
+			{
+				"from": 4,
+				"to": 10,
+				"weight": 1
+			},
+			{
+				"from": 5,
+				"to": 11,
+				"weight": 1
+			},
+			{
+				"from": 5,
+				"to": 12,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 13,
+				"weight": 1
+			},
+			{
+				"from": 6,
+				"to": 14,
+				"weight": 1
+			},
+			{
+				"from": 7,
+				"to": 15,
+				"weight": 1
+			},
+			{
+				"from": 7,
+				"to": 16,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 17,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 18,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 19,
+				"weight": 1
+			},
+			{
+				"from": 9,
+				"to": 20,
+				"weight": 1
+			},
+			{
+				"from": 10,
+				"to": 21,
+				"weight": 1
+			},
+			{
+				"from": 10,
+				"to": 22,
+				"weight": 1
+			},
+			{
+				"from": 11,
+				"to": 23,
+				"weight": 1
+			},
+			{
+				"from": 11,
+				"to": 24,
+				"weight": 1
+			},
+			{
+				"from": 12,
+				"to": 25,
+				"weight": 1
+			},
+			{
+				"from": 12,
+				"to": 26,
+				"weight": 1
+			},
+			{
+				"from": 13,
+				"to": 27,
+				"weight": 1
+			},
+			{
+				"from": 13,
+				"to": 28,
+				"weight": 1
+			},
+			{
+				"from": 14,
+				"to": 29,
+				"weight": 1
+			},
+			{
+				"from": 14,
+				"to": 30,
+				"weight": 1
+			}
+		],
+		"next_id": 31,
+		"nodes": [
+			{
+				"heuristic_value": 56,
+				"id": 0,
+				"is_goal": false,
+				"is_start": true,
+				"label": "0",
+				"position": "(765, 86)"
+			},
+			{
+				"heuristic_value": 52,
+				"id": 1,
+				"is_goal": false,
+				"is_start": false,
+				"label": "1",
+				"position": "(453, 256)"
+			},
+			{
+				"heuristic_value": 49,
+				"id": 2,
+				"is_goal": false,
+				"is_start": false,
+				"label": "2",
+				"position": "(1092, 256)"
+			},
+			{
+				"heuristic_value": 57,
+				"id": 3,
+				"is_goal": false,
+				"is_start": false,
+				"label": "3",
+				"position": "(257, 400)"
+			},
+			{
+				"heuristic_value": 30,
+				"id": 4,
+				"is_goal": false,
+				"is_start": false,
+				"label": "4",
+				"position": "(591, 400)"
+			},
+			{
+				"heuristic_value": 28,
+				"id": 5,
+				"is_goal": false,
+				"is_start": false,
+				"label": "5",
+				"position": "(923, 400)"
+			},
+			{
+				"heuristic_value": 55,
+				"id": 6,
+				"is_goal": false,
+				"is_start": false,
+				"label": "6",
+				"position": "(1280, 400)"
+			},
+			{
+				"heuristic_value": 63,
+				"id": 7,
+				"is_goal": false,
+				"is_start": false,
+				"label": "7",
+				"position": "(160, 544)"
+			},
+			{
+				"heuristic_value": 46,
+				"id": 8,
+				"is_goal": false,
+				"is_start": false,
+				"label": "8",
+				"position": "(327, 544)"
+			},
+			{
+				"heuristic_value": 30,
+				"id": 9,
+				"is_goal": false,
+				"is_start": false,
+				"label": "9",
+				"position": "(502, 544)"
+			},
+			{
+				"heuristic_value": 15,
+				"id": 10,
+				"is_goal": false,
+				"is_start": false,
+				"label": "10",
+				"position": "(669, 544)"
+			},
+			{
+				"heuristic_value": 12,
+				"id": 11,
+				"is_goal": false,
+				"is_start": false,
+				"label": "11",
+				"position": "(832, 544)"
+			},
+			{
+				"heuristic_value": 24,
+				"id": 12,
+				"is_goal": false,
+				"is_start": false,
+				"label": "12",
+				"position": "(1002, 544)"
+			},
+			{
+				"heuristic_value": 43,
+				"id": 13,
+				"is_goal": false,
+				"is_start": false,
+				"label": "13",
+				"position": "(1209, 544)"
+			},
+			{
+				"heuristic_value": 62,
+				"id": 14,
+				"is_goal": false,
+				"is_start": false,
+				"label": "14",
+				"position": "(1395, 544)"
+			},
+			{
+				"heuristic_value": 67,
+				"id": 15,
+				"is_goal": false,
+				"is_start": false,
+				"label": "15",
+				"position": "(114, 656)"
+			},
+			{
+				"heuristic_value": 57,
+				"id": 16,
+				"is_goal": false,
+				"is_start": false,
+				"label": "16",
+				"position": "(206, 656)"
+			},
+			{
+				"heuristic_value": 49,
+				"id": 17,
+				"is_goal": false,
+				"is_start": false,
+				"label": "17",
+				"position": "(285, 656)"
+			},
+			{
+				"heuristic_value": 41,
+				"id": 18,
+				"is_goal": false,
+				"is_start": false,
+				"label": "18",
+				"position": "(373, 656)"
+			},
+			{
+				"heuristic_value": 33,
+				"id": 19,
+				"is_goal": false,
+				"is_start": false,
+				"label": "19",
+				"position": "(446, 656)"
+			},
+			{
+				"heuristic_value": 24,
+				"id": 20,
+				"is_goal": false,
+				"is_start": false,
+				"label": "20",
+				"position": "(542, 656)"
+			},
+			{
+				"heuristic_value": 16,
+				"id": 21,
+				"is_goal": false,
+				"is_start": false,
+				"label": "21",
+				"position": "(618, 656)"
+			},
+			{
+				"heuristic_value": 7,
+				"id": 22,
+				"is_goal": false,
+				"is_start": false,
+				"label": "22",
+				"position": "(713, 656)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 23,
+				"is_goal": true,
+				"is_start": false,
+				"label": "23",
+				"position": "(784, 656)"
+			},
+			{
+				"heuristic_value": 8,
+				"id": 24,
+				"is_goal": false,
+				"is_start": false,
+				"label": "24",
+				"position": "(869, 656)"
+			},
+			{
+				"heuristic_value": 15,
+				"id": 25,
+				"is_goal": false,
+				"is_start": false,
+				"label": "25",
+				"position": "(940, 656)"
+			},
+			{
+				"heuristic_value": 27,
+				"id": 26,
+				"is_goal": false,
+				"is_start": false,
+				"label": "26",
+				"position": "(1062, 656)"
+			},
+			{
+				"heuristic_value": 35,
+				"id": 27,
+				"is_goal": false,
+				"is_start": false,
+				"label": "27",
+				"position": "(1135, 656)"
+			},
+			{
+				"heuristic_value": 47,
+				"id": 28,
+				"is_goal": false,
+				"is_start": false,
+				"label": "28",
+				"position": "(1254, 656)"
+			},
+			{
+				"heuristic_value": 54,
+				"id": 29,
+				"is_goal": false,
+				"is_start": false,
+				"label": "29",
+				"position": "(1327, 656)"
+			},
+			{
+				"heuristic_value": 67,
+				"id": 30,
+				"is_goal": false,
+				"is_start": false,
+				"label": "30",
+				"position": "(1457, 656)"
+			}
+		]
+	},
+	"options": [
+		{
+			"name": "algorithm",
+			"option_type": 0,
+			"value": 0,
+			"value_type": {
+				"A_STAR_SEARCH": 3,
+				"BREADTH_FIRST_SEARCH": 0,
+				"DEPTH_FIRST_SEARCH": 1,
+				"ITERATIVE_DEEPENING_DEPTH_FIRST_SEARCH": 4,
+				"UNIFORM_COST_SEARCH": 2
+			}
+		},
+		{
+			"name": "start_colour",
+			"option_type": 1,
+			"value": "(0, 1, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "goal_colour",
+			"option_type": 1,
+			"value": "(1, 0.6471, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "node_colour",
+			"option_type": 1,
+			"value": "(0.5294, 0.8078, 0.9804, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "fill_nodes",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "node_size",
+			"option_type": 4,
+			"value": 32,
+			"value_type": {
+				"max": 64,
+				"min": 16,
+				"step": 1
+			}
+		},
+		{
+			"name": "enable_edge_weights",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "show_heuristics",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "distance_scale",
+			"option_type": 4,
+			"value": 10,
+			"value_type": {
+				"max": 100,
+				"min": 1,
+				"step": 1
+			}
+		},
+		{
+			"name": "force_uniform_path_cost",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		}
+	]
+}
