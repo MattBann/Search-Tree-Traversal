@@ -49,15 +49,13 @@ func _init() -> void:
 
 
 static func get_path_to_node(node : VisualisationNodeData) -> String:
-	var s := ""
-	s += str(node.node_id)
-	var n := node.previous_node
+	var nodes := PackedStringArray()
+	var n := node
 	while n:
-		s += " >- " + str(n.node_id)
+		nodes.append(Controller.get_current_config().get_graph().get_node(n.node_id).label)
 		n = n.previous_node
-	var path := ""
-	for i in range(s.length() - 1, -1, -1):
-		path += s[i]
+	nodes.reverse()
+	var path := " -> ".join(nodes)
 	return path
 
 
@@ -179,5 +177,12 @@ func enqueue() -> void:
 				algorithm_variables.get("depth_stack", []).push_front(0)
 				algorithm_variables["max_depth"] = algorithm_variables.get("max_depth", 0) + 1
 				algorithm_variables["current_depth"] += 1
+
+		(SetupData.Algorithm.GREEDY_BEST_FIRST_SEARCH):
+			# Enqueue by heuristic (distance to goal) (i.e. add to q then sort by heuristic)
+			queue.append_array(expansion_list)
+			queue.sort_custom(func (a:VisualisationNodeData,b:VisualisationNodeData): \
+				return Controller.get_current_config().get_graph().get_node(a.node_id).heuristic_value \
+					< Controller.get_current_config().get_graph().get_node(b.node_id).heuristic_value)
 			
 	queue_changed.emit(queue)

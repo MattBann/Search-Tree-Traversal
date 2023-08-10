@@ -38,8 +38,13 @@ func _on_runner_stepped(new_stage : Runner.Stages = Runner.Stages.SELECT_NODE) -
 
 
 func _get_node_text(node : VisualisationNodeData) -> String:
-	var heuristic : String = (" + " + str(Controller.get_current_config().get_graph().get_node(node.node_id).heuristic_value)) if Controller.get_current_config().get_option("algorithm") == SetupData.Algorithm.A_STAR_SEARCH else ""
-	return Controller.get_current_config().get_graph().get_node(node.node_id).label + " (" + str(node.cost) + heuristic + ")"
+	var heuristic : String = ("h:" + str(Controller.get_current_config().get_graph().get_node(node.node_id).heuristic_value)) \
+		if Controller.get_current_config().get_option("algorithm") == SetupData.Algorithm.A_STAR_SEARCH \
+		or Controller.get_current_config().get_option("algorithm") == SetupData.Algorithm.GREEDY_BEST_FIRST_SEARCH \
+		else ""
+	var cost := str(node.cost) if Controller.get_current_config().get_option("algorithm") != SetupData.Algorithm.GREEDY_BEST_FIRST_SEARCH else ""
+	return Controller.get_current_config().get_graph().get_node(node.node_id).label \
+		+ " (" + cost + (" + " if cost != "" and heuristic != "" else "") + heuristic + ")"
 
 
 # Update text showing the current node and its path cost
