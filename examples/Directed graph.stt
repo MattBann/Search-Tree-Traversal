@@ -1,0 +1,262 @@
+{
+	"graph": {
+		"edges": [
+			{
+				"from": 0,
+				"to": 1,
+				"weight": 8
+			},
+			{
+				"from": 1,
+				"to": 2,
+				"weight": 3
+			},
+			{
+				"from": 2,
+				"to": 1,
+				"weight": 2
+			},
+			{
+				"from": 1,
+				"to": 3,
+				"weight": 1
+			},
+			{
+				"from": 2,
+				"to": 3,
+				"weight": 9
+			},
+			{
+				"from": 3,
+				"to": 4,
+				"weight": 4
+			},
+			{
+				"from": 4,
+				"to": 3,
+				"weight": 6
+			},
+			{
+				"from": 0,
+				"to": 2,
+				"weight": 3
+			},
+			{
+				"from": 2,
+				"to": 4,
+				"weight": 2
+			},
+			{
+				"from": 3,
+				"to": 7,
+				"weight": 2
+			},
+			{
+				"from": 3,
+				"to": 6,
+				"weight": 6
+			},
+			{
+				"from": 6,
+				"to": 7,
+				"weight": 4
+			},
+			{
+				"from": 7,
+				"to": 8,
+				"weight": 1
+			},
+			{
+				"from": 8,
+				"to": 6,
+				"weight": 5
+			},
+			{
+				"from": 4,
+				"to": 8,
+				"weight": 4
+			},
+			{
+				"from": 6,
+				"to": 4,
+				"weight": 3
+			},
+			{
+				"from": 4,
+				"to": 5,
+				"weight": 5
+			},
+			{
+				"from": 5,
+				"to": 8,
+				"weight": 7
+			},
+			{
+				"from": 5,
+				"to": 6,
+				"weight": 1
+			},
+			{
+				"from": 4,
+				"to": 0,
+				"weight": 5
+			},
+			{
+				"from": 0,
+				"to": 5,
+				"weight": 13
+			}
+		],
+		"next_id": 9,
+		"nodes": [
+			{
+				"heuristic_value": 0,
+				"id": 0,
+				"is_goal": false,
+				"is_start": true,
+				"label": "0",
+				"position": "(144, 390)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 1,
+				"is_goal": false,
+				"is_start": false,
+				"label": "1",
+				"position": "(356, 160)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 2,
+				"is_goal": false,
+				"is_start": false,
+				"label": "2",
+				"position": "(420, 353)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 3,
+				"is_goal": false,
+				"is_start": false,
+				"label": "3",
+				"position": "(827, 149)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 4,
+				"is_goal": false,
+				"is_start": false,
+				"label": "4",
+				"position": "(553, 470)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 5,
+				"is_goal": false,
+				"is_start": false,
+				"label": "5",
+				"position": "(578, 725)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 6,
+				"is_goal": false,
+				"is_start": false,
+				"label": "6",
+				"position": "(1087, 596)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 7,
+				"is_goal": false,
+				"is_start": false,
+				"label": "7",
+				"position": "(812, 416)"
+			},
+			{
+				"heuristic_value": 0,
+				"id": 8,
+				"is_goal": false,
+				"is_start": false,
+				"label": "8",
+				"position": "(776, 603)"
+			}
+		]
+	},
+	"options": [
+		{
+			"name": "algorithm",
+			"option_type": 0,
+			"value": 0,
+			"value_type": {
+				"A_STAR_SEARCH": 3,
+				"BREADTH_FIRST_SEARCH": 0,
+				"DEPTH_FIRST_SEARCH": 1,
+				"ITERATIVE_DEEPENING_DEPTH_FIRST_SEARCH": 4,
+				"UNIFORM_COST_SEARCH": 2
+			}
+		},
+		{
+			"name": "start_colour",
+			"option_type": 1,
+			"value": "(0, 1, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "goal_colour",
+			"option_type": 1,
+			"value": "(1, 0.6471, 0, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "node_colour",
+			"option_type": 1,
+			"value": "(0.5294, 0.8078, 0.9804, 1)",
+			"value_type": 20
+		},
+		{
+			"name": "fill_nodes",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "node_size",
+			"option_type": 4,
+			"value": 32,
+			"value_type": {
+				"max": 64,
+				"min": 16,
+				"step": 1
+			}
+		},
+		{
+			"name": "enable_edge_weights",
+			"option_type": 2,
+			"value": true,
+			"value_type": 1
+		},
+		{
+			"name": "show_heuristics",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		},
+		{
+			"name": "distance_scale",
+			"option_type": 4,
+			"value": 10,
+			"value_type": {
+				"max": 100,
+				"min": 1,
+				"step": 1
+			}
+		},
+		{
+			"name": "force_uniform_path_cost",
+			"option_type": 2,
+			"value": false,
+			"value_type": 1
+		}
+	]
+}
