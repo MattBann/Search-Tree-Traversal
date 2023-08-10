@@ -269,183 +269,183 @@
 				"id": 0,
 				"is_goal": false,
 				"is_start": true,
-				"label": "0",
-				"position": "(123, 274)"
+				"label": "Start",
+				"position": "(170, 280)"
 			},
 			{
 				"heuristic_value": 64,
 				"id": 1,
 				"is_goal": false,
 				"is_start": false,
-				"label": "1",
-				"position": "(283, 513)"
+				"label": "A5",
+				"position": "(280, 500)"
 			},
 			{
 				"heuristic_value": 61,
 				"id": 2,
 				"is_goal": false,
 				"is_start": false,
-				"label": "2",
-				"position": "(281, 389)"
+				"label": "A4",
+				"position": "(280, 390)"
 			},
 			{
 				"heuristic_value": 60,
 				"id": 3,
 				"is_goal": false,
 				"is_start": false,
-				"label": "3",
-				"position": "(284, 275)"
+				"label": "A3",
+				"position": "(280, 280)"
 			},
 			{
 				"heuristic_value": 61,
 				"id": 4,
 				"is_goal": false,
 				"is_start": false,
-				"label": "4",
-				"position": "(284, 160)"
+				"label": "A2",
+				"position": "(280, 170)"
 			},
 			{
 				"heuristic_value": 64,
 				"id": 5,
 				"is_goal": false,
 				"is_start": false,
-				"label": "5",
-				"position": "(282, 42)"
+				"label": "A1",
+				"position": "(280, 60)"
 			},
 			{
 				"heuristic_value": 54,
 				"id": 6,
 				"is_goal": false,
 				"is_start": false,
-				"label": "6",
-				"position": "(393, 41)"
+				"label": "B1",
+				"position": "(390, 60)"
 			},
 			{
 				"heuristic_value": 50,
 				"id": 7,
 				"is_goal": false,
 				"is_start": false,
-				"label": "7",
-				"position": "(391, 156)"
+				"label": "B2",
+				"position": "(390, 170)"
 			},
 			{
 				"heuristic_value": 49,
 				"id": 8,
 				"is_goal": false,
 				"is_start": false,
-				"label": "8",
-				"position": "(389, 276)"
+				"label": "B3",
+				"position": "(390, 280)"
 			},
 			{
 				"heuristic_value": 50,
 				"id": 9,
 				"is_goal": false,
 				"is_start": false,
-				"label": "9",
-				"position": "(387, 395)"
+				"label": "B4",
+				"position": "(390, 390)"
 			},
 			{
 				"heuristic_value": 54,
 				"id": 10,
 				"is_goal": false,
 				"is_start": false,
-				"label": "10",
-				"position": "(388, 513)"
+				"label": "B5",
+				"position": "(390, 500)"
 			},
 			{
 				"heuristic_value": 44,
 				"id": 11,
 				"is_goal": false,
 				"is_start": false,
-				"label": "11",
-				"position": "(497, 510)"
+				"label": "C5",
+				"position": "(500, 500)"
 			},
 			{
 				"heuristic_value": 40,
 				"id": 12,
 				"is_goal": false,
 				"is_start": false,
-				"label": "12",
-				"position": "(496, 393)"
+				"label": "C4",
+				"position": "(500, 390)"
 			},
 			{
 				"heuristic_value": 38,
 				"id": 13,
 				"is_goal": false,
 				"is_start": false,
-				"label": "13",
-				"position": "(497, 276)"
+				"label": "C3",
+				"position": "(500, 280)"
 			},
 			{
 				"heuristic_value": 40,
 				"id": 14,
 				"is_goal": false,
 				"is_start": false,
-				"label": "14",
-				"position": "(498, 156)"
+				"label": "C2",
+				"position": "(500, 170)"
 			},
 			{
 				"heuristic_value": 45,
 				"id": 15,
 				"is_goal": false,
 				"is_start": false,
-				"label": "15",
-				"position": "(498, 41)"
+				"label": "C1",
+				"position": "(500, 60)"
 			},
 			{
 				"heuristic_value": 36,
 				"id": 16,
 				"is_goal": false,
 				"is_start": false,
-				"label": "16",
-				"position": "(607, 45)"
+				"label": "D1",
+				"position": "(610, 60)"
 			},
 			{
 				"heuristic_value": 30,
 				"id": 17,
 				"is_goal": false,
 				"is_start": false,
-				"label": "17",
-				"position": "(606, 155)"
+				"label": "D2",
+				"position": "(610, 170)"
 			},
 			{
 				"heuristic_value": 28,
 				"id": 18,
 				"is_goal": false,
 				"is_start": false,
-				"label": "18",
-				"position": "(603, 278)"
+				"label": "D3",
+				"position": "(610, 280)"
 			},
 			{
 				"heuristic_value": 29,
 				"id": 19,
 				"is_goal": false,
 				"is_start": false,
-				"label": "19",
-				"position": "(606, 391)"
+				"label": "D4",
+				"position": "(610, 390)"
 			},
 			{
 				"heuristic_value": 35,
 				"id": 20,
 				"is_goal": false,
 				"is_start": false,
-				"label": "20",
-				"position": "(605, 511)"
+				"label": "D5",
+				"position": "(610, 500)"
 			},
 			{
 				"heuristic_value": 27,
 				"id": 21,
 				"is_goal": false,
 				"is_start": false,
-				"label": "21",
-				"position": "(722, 510)"
+				"label": "E5",
+				"position": "(720, 500)"
 			},
 			{
 				"heuristic_value": 19,
 				"id": 22,
 				"is_goal": false,
 				"is_start": false,
-				"label": "22",
+				"label": "E4",
 				"position": "(720, 390)"
 			},
 			{
@@ -453,32 +453,32 @@
 				"id": 23,
 				"is_goal": false,
 				"is_start": false,
-				"label": "23",
-				"position": "(721, 278)"
+				"label": "E3",
+				"position": "(720, 280)"
 			},
 			{
 				"heuristic_value": 21,
 				"id": 24,
 				"is_goal": false,
 				"is_start": false,
-				"label": "24",
-				"position": "(720, 154)"
+				"label": "E2",
+				"position": "(720, 170)"
 			},
 			{
 				"heuristic_value": 29,
 				"id": 25,
 				"is_goal": false,
 				"is_start": false,
-				"label": "25",
-				"position": "(721, 42)"
+				"label": "E1",
+				"position": "(720, 60)"
 			},
 			{
 				"heuristic_value": 0,
 				"id": 26,
 				"is_goal": true,
 				"is_start": false,
-				"label": "26",
-				"position": "(884, 286)"
+				"label": "Goal",
+				"position": "(830, 280)"
 			}
 		]
 	},
