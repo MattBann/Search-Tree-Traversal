@@ -168,7 +168,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "1",
-				"position": "(453, 249)"
+				"position": "(453, 256)"
 			},
 			{
 				"heuristic_value": 49,
@@ -176,7 +176,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "2",
-				"position": "(1092, 267)"
+				"position": "(1092, 256)"
 			},
 			{
 				"heuristic_value": 57,
@@ -184,7 +184,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "3",
-				"position": "(257, 416)"
+				"position": "(257, 400)"
 			},
 			{
 				"heuristic_value": 30,
@@ -192,7 +192,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "4",
-				"position": "(591, 415)"
+				"position": "(591, 400)"
 			},
 			{
 				"heuristic_value": 28,
@@ -200,7 +200,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "5",
-				"position": "(923, 405)"
+				"position": "(923, 400)"
 			},
 			{
 				"heuristic_value": 55,
@@ -208,7 +208,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "6",
-				"position": "(1280, 416)"
+				"position": "(1280, 400)"
 			},
 			{
 				"heuristic_value": 63,
@@ -216,7 +216,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "7",
-				"position": "(160, 549)"
+				"position": "(160, 544)"
 			},
 			{
 				"heuristic_value": 46,
@@ -224,7 +224,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "8",
-				"position": "(327, 549)"
+				"position": "(327, 544)"
 			},
 			{
 				"heuristic_value": 30,
@@ -248,7 +248,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "11",
-				"position": "(832, 542)"
+				"position": "(832, 544)"
 			},
 			{
 				"heuristic_value": 24,
@@ -256,7 +256,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "12",
-				"position": "(1002, 543)"
+				"position": "(1002, 544)"
 			},
 			{
 				"heuristic_value": 43,
@@ -272,7 +272,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "14",
-				"position": "(1395, 548)"
+				"position": "(1395, 544)"
 			},
 			{
 				"heuristic_value": 67,
@@ -280,7 +280,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "15",
-				"position": "(114, 662)"
+				"position": "(114, 656)"
 			},
 			{
 				"heuristic_value": 57,
@@ -288,7 +288,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "16",
-				"position": "(206, 662)"
+				"position": "(206, 656)"
 			},
 			{
 				"heuristic_value": 49,
@@ -296,7 +296,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "17",
-				"position": "(285, 660)"
+				"position": "(285, 656)"
 			},
 			{
 				"heuristic_value": 41,
@@ -304,7 +304,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "18",
-				"position": "(373, 661)"
+				"position": "(373, 656)"
 			},
 			{
 				"heuristic_value": 33,
@@ -312,7 +312,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "19",
-				"position": "(446, 662)"
+				"position": "(446, 656)"
 			},
 			{
 				"heuristic_value": 24,
@@ -320,7 +320,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "20",
-				"position": "(542, 661)"
+				"position": "(542, 656)"
 			},
 			{
 				"heuristic_value": 16,
@@ -328,7 +328,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "21",
-				"position": "(618, 661)"
+				"position": "(618, 656)"
 			},
 			{
 				"heuristic_value": 7,
@@ -344,7 +344,7 @@
 				"is_goal": true,
 				"is_start": false,
 				"label": "23",
-				"position": "(784, 655)"
+				"position": "(784, 656)"
 			},
 			{
 				"heuristic_value": 8,
@@ -352,7 +352,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "24",
-				"position": "(869, 654)"
+				"position": "(869, 656)"
 			},
 			{
 				"heuristic_value": 15,
@@ -360,7 +360,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "25",
-				"position": "(940, 653)"
+				"position": "(940, 656)"
 			},
 			{
 				"heuristic_value": 27,
@@ -368,7 +368,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "26",
-				"position": "(1062, 649)"
+				"position": "(1062, 656)"
 			},
 			{
 				"heuristic_value": 35,
@@ -376,7 +376,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "27",
-				"position": "(1135, 651)"
+				"position": "(1135, 656)"
 			},
 			{
 				"heuristic_value": 47,
@@ -384,7 +384,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "28",
-				"position": "(1254, 650)"
+				"position": "(1254, 656)"
 			},
 			{
 				"heuristic_value": 54,
@@ -392,7 +392,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "29",
-				"position": "(1327, 646)"
+				"position": "(1327, 656)"
 			},
 			{
 				"heuristic_value": 67,
@@ -400,7 +400,7 @@
 				"is_goal": false,
 				"is_start": false,
 				"label": "30",
-				"position": "(1457, 645)"
+				"position": "(1457, 656)"
 			}
 		]
 	},
