@@ -49,15 +49,13 @@ func _init() -> void:
 
 
 static func get_path_to_node(node : VisualisationNodeData) -> String:
-	var s := ""
-	s += str(node.node_id)
-	var n := node.previous_node
+	var nodes := PackedStringArray()
+	var n := node
 	while n:
-		s += " >- " + str(n.node_id)
+		nodes.append(Controller.get_current_config().get_graph().get_node(n.node_id).label)
 		n = n.previous_node
-	var path := ""
-	for i in range(s.length() - 1, -1, -1):
-		path += s[i]
+	nodes.reverse()
+	var path := " -> ".join(nodes)
 	return path
 
 
