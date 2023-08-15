@@ -179,7 +179,7 @@ func _on_label_text_changed(new_text: String) -> void:
 
 # When the user submits a new weight, check its valid then assign it to the actual edge
 func _on_label_text_submitted(new_text: String) -> void:
-	if new_text.is_valid_int():
+	if new_text.is_valid_int() and not Controller.get_current_config().get_option("force_uniform_path_cost"):
 		var new_weight := int(new_text)
 		var edge : GraphEdgeData = Controller.get_current_config().get_graph().get_edge(from_id, to_id)
 		if edge != null:
