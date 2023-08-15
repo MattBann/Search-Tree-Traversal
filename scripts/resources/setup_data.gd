@@ -95,6 +95,12 @@ enum OptionType {
 			value_type = TYPE_BOOL,
 			value = false,
 		},
+		{
+			name = "ignore_visited_nodes",
+			option_type = OptionType.SWITCH,
+			value_type = TYPE_BOOL,
+			value = true,
+		}
 	],
 	graph = {
 		nodes = [],

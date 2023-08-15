@@ -83,7 +83,7 @@ func step() -> void:
 				if current_node == null:
 					Controller.abort_visualisation()
 					return
-				if current_node.node_id not in visited:
+				if current_node.node_id not in visited or not Controller.get_current_config().get_option("ignore_visited_nodes"):
 					break
 			expansion_list.clear()
 			# If current_depth is defined, update its value
@@ -111,7 +111,7 @@ func step() -> void:
 			# Special case: IDDFS: if at depth limit don't expand
 			if algorithm_variables.get("current_depth", -1) != algorithm_variables.get("max_depth", 0):
 				for edge in Controller.get_current_config().get_graph().get_edges_from(current_node.node_id):
-					if not edge.to in visited:
+					if not edge.to in visited or not Controller.get_current_config().get_option("ignore_visited_nodes"):
 						print(edge.weight)
 						expansion_list.append(VisualisationNodeData.new(edge.to, current_node.cost + (1.0 if Controller.get_current_config().get_option("force_uniform_path_cost") else edge.weight), current_node))
 				expansion_list_changed.emit(expansion_list)
