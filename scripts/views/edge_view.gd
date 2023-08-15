@@ -68,7 +68,7 @@ func refresh() -> void:
 	arrow.position = to_pos - ((to_pos.normalized()*Controller.get_current_config().get_option("node_size")) if not connecting_mode else Vector2.ZERO)
 	arrow.look_at(arrow.global_position+to_pos)
 	# If enabled, configure and show the edge's weight
-	if Controller.get_current_config().get_option("enable_edge_weights") and edge != null:
+	if Controller.get_current_config().get_option("show_edge_weights") and edge != null:
 		weight_label.text = str(edge.weight)
 		var offset := (to_pos.normalized().rotated(-PI/2)*20)
 		weight_label.set_position((-weight_label.get_rect().size/2)+(to_pos/2) + offset)

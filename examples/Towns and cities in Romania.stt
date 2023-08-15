@@ -434,7 +434,7 @@
 			}
 		},
 		{
-			"name": "enable_edge_weights",
+			"name": "show_edge_weights",
 			"option_type": 2,
 			"value": true,
 			"value_type": 1
