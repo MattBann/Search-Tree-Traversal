@@ -68,7 +68,7 @@ enum OptionType {
 			value = 32
 		},
 		{
-			name = "enable_edge_weights",
+			name = "show_edge_weights",
 			option_type = OptionType.SWITCH,
 			value_type = TYPE_BOOL,
 			value = false,
